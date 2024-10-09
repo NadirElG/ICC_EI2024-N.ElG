@@ -5,5 +5,5 @@ use Illuminate\Support\Facades\Route;
 
 // Coach Routes
 Route::middleware(['auth', 'role:coach'])->group(function () {
-    Route::get('coach/dashboard', [CoachController::class, 'dashboard'])->name('coach.dashboard');
+    Route::get('/dashboard', [CoachController::class, 'dashboard'])->name('dashboard');
 });

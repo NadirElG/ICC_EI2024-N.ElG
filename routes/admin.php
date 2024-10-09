@@ -3,7 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use Illuminate\Support\Facades\Route;
 
-// Coach Routes
+// Admin Routes
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 });

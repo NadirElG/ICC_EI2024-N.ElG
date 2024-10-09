@@ -11,43 +11,50 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * The path to the "home" route for your application.
+     * Le chemin vers la route "home" de votre application.
      *
-     * Typically, users are redirected here after authentication.
+     * Typiquement, les utilisateurs sont redirigés ici après l'authentification.
      *
      * @var string
      */
     public const HOME = '/dashboard';
 
     /**
-     * Define your route model bindings, pattern filters, and other route configuration.
+     * Définir les liaisons de modèle de route, les filtres de motifs
+     * et d'autres configurations de route.
      */
     public function boot(): void
     {
+        // Configuration de la limitation de taux des requêtes
         $this->configureRateLimiting();
 
+        // Enregistrement des groupes de routes
         $this->routes(function () {
-            // Charger les routes API, préfixées par 'api' et appliquant le middleware 'api'
+            // Charger les routes API avec le préfixe 'api' et appliquer le middleware 'api'
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            // Charger les routes web générales, appliquant le middleware 'web'
+            // Charger les routes web générales avec le middleware 'web'
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            // Charger les routes spécifiques aux Admins, protégées par le middleware 'web'
-            Route::middleware('web')
+            // Charger les routes Admin avec les middlewares 'auth' et 'role:admin'
+            Route::middleware(['web', 'auth', 'role:admin']) // Ajout des middlewares
+                ->prefix('admin')
+                ->as('admin.') // Préfixer les noms de route avec 'admin.'
                 ->group(base_path('routes/admin.php'));
 
-            // Charger les routes spécifiques aux Coachs, protégées par le middleware 'web'
-            Route::middleware('web')
+            // Charger les routes Coach avec les middlewares 'auth' et 'role:coach'
+            Route::middleware(['web', 'auth', 'role:coach']) // Ajout des middlewares
+                ->prefix('coach')
+                ->as('coach.') // Préfixer les noms de route avec 'coach.'
                 ->group(base_path('routes/coach.php'));
         });
     }
 
     /**
-     * Configure the rate limiters for the application.
+     * Configurer les limitateurs de requêtes pour l'application.
      */
     protected function configureRateLimiting(): void
     {
