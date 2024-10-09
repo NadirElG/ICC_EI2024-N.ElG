@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Backend\AdminController;  // Import AdminController
+use App\Http\Controllers\Backend\CoachController;  // Import CoachController
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+//Admin Routes
+Route::get('admin/dashboard',[AdminController::class,'dashboard'])->middleware('auth')->name('admin.dashboard');
+
+//Coach Routes
+Route::get('coach/dashboard',[CoachController::class,'dashboard'])->middleware('auth')->name('coach.dashboard');
