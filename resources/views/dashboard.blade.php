@@ -12,6 +12,21 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+
+            <!-- Liens vers les dashboards Admin et Coach avec boutons -->
+            <div class="mt-4 space-y-4">
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('admin.dashboard') }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Admin dashboard
+                    </a>
+                @endif
+
+                @if (auth()->user()->role === 'coach')
+                    <a href="{{ route('coach.dashboard') }}" class="inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        Coach Dashboard
+                    </a>
+                @endif
+            </div>
         </div>
     </div>
 </x-app-layout>
