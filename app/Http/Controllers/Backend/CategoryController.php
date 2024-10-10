@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\DataTables\CategoryDataTable;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,9 +11,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(CategoryDataTable $dataTable)
     {
-        return view('admin.category.index');
+        return $dataTable->render('admin.category.index');
     }
 
     /**

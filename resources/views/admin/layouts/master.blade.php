@@ -22,9 +22,6 @@
   <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
 
-  <!-- DataTables CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
@@ -85,11 +82,9 @@
   <!-- Template JS File -->
   <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-  <script src="  //cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css"></script>
+  <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
+  @stack('scripts')
 
-  <!-- DataTables JS -->
-  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
 </body>
 </html>

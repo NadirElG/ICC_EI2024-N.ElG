@@ -23,8 +23,17 @@ class CategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', 'category.action')
+            ->editColumn('status', function ($category) {
+                return $category->status ? 'Active' : 'Inactive';
+            })
+            ->editColumn('created_at', function ($category) {
+                return \Carbon\Carbon::parse($category->created_at)->diffForHumans();
+            })
+            ->rawColumns(['image', 'action']) // Pour rendre le HTML brut
             ->setRowId('id');
     }
+    
+    
 
     /**
      * Get the query source of dataTable.
@@ -43,7 +52,6 @@ class CategoryDataTable extends DataTable
                     ->setTableId('category-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    //->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
@@ -68,9 +76,11 @@ class CategoryDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
+            Column::make('name'),
+            Column::make('description'),
+            Column::make('status'),
+            Column::make('image'),
             Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 
