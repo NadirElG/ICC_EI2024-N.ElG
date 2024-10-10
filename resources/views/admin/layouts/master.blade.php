@@ -8,6 +8,9 @@
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+
+  
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
@@ -82,6 +85,8 @@
   <!-- Template JS File -->
   <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+  <script src="  //cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css"></script>
+
 
   <!-- DataTables JS -->
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
