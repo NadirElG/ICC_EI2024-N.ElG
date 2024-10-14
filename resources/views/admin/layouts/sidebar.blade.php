@@ -25,7 +25,13 @@
                 <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li>
               </ul>
             </li>
-            <li><a class="nav-link" href="{{ route('admin.category.index') }}"><i class="far fa-square"></i> <span>Category</span></a></li>
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Category</span></a>
+              <ul class="dropdown-menu">
+              <li><a class="nav-link" href="{{ route('admin.category.index') }}"><span>View Category</span></a></li>
+                <li><a class="nav-link" href="{{ route('admin.category.create') }}">Create Category</a></li>
+              </ul>
+            </li>
           </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
