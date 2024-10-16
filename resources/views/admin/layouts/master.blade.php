@@ -88,50 +88,54 @@
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 
   <script>
-    $.ajaxSetup({
-      headers:{
-        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-      }
-    });
 
-    $(document).ready(function() {
-        $('body').on('click', '.delete-item', function(e){
-            e.preventDefault()
-            let url = $(this).attr('href');
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                      method: 'DELETE',
-                      url: url,
-                      success: function(response){
-                        if(response.status === 'success'){
-                          //toastr.success(response.message)
-                          $('#category-table').DataTable().draw();
-                        }else if(response.status === 'error'){
-                          //toastr.success(response.message)
-                        }
-                      },
-                      error: function(error){
-                        console.error(error);
-                      }
-                    })
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    }); 
-                }
-            });
+    // $.ajaxSetup({
+    //   headers:{
+    //     'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // });
+
+$(document).ready(function() {
+    $('body').on('click', '.delete-item', function(e){
+        e.preventDefault()
+        let url = $(this).attr('href');
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                  method: 'DELETE',
+                  url: url,
+                  data: {
+                    _token: "{{ csrf_token() }}" // Récupère le token depuis la balise <meta>
+                  },
+                  success: function(response){
+                    if(response.status === 'success'){
+                      window.location.reload();
+                    } else if(response.status === 'error'){
+                      console.error(response.message);
+                    }
+                  },
+                  error: function(error){
+                    console.error(error);
+                  }
+                });
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                }); 
+            }
         });
     });
+});
+
 </script>
 
 
