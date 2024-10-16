@@ -102,6 +102,12 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $category = Category::findOrFail($id);
+            $category-> delete();
+            return response(['status' => 'success','message' => 'Deleted Successfully']);
+        }catch( \Exception $e){
+            return response(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

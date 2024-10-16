@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Admin Dashboard &mdash; Sloteam</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}">
   <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
-
-  
 
   <!-- CSS Libraries -->
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/jqvmap/dist/jqvmap.min.css') }}">
@@ -21,7 +20,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
-
+  
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
   <script>
@@ -35,6 +34,7 @@
 </head>
 
 <body>
+
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -76,15 +76,64 @@
   <script src="{{ asset('backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
   <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
+  <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
   <!-- Page Specific JS File -->
   <script src="{{ asset('backend/assets/js/page/index-0.js') }}"></script>
   
   <!-- Template JS File -->
   <script src="{{ asset('backend/assets/js/scripts.js') }}"></script>
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
-  <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
-  
+  <script>
+    $.ajaxSetup({
+      headers:{
+        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
+    $(document).ready(function() {
+        $('body').on('click', '.delete-item', function(e){
+            e.preventDefault()
+            let url = $(this).attr('href');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                      method: 'DELETE',
+                      url: url,
+                      success: function(response){
+                        if(response.status === 'success'){
+                          //toastr.success(response.message)
+                          $('#category-table').DataTable().draw();
+                        }else if(response.status === 'error'){
+                          //toastr.success(response.message)
+                        }
+                      },
+                      error: function(error){
+                        console.error(error);
+                      }
+                    })
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    }); 
+                }
+            });
+        });
+    });
+</script>
+
 
   @stack('scripts')
 
