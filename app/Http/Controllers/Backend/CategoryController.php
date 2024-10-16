@@ -104,6 +104,7 @@ class CategoryController extends Controller
     {
         try{
             $category = Category::findOrFail($id);
+            $this->removeImage($category->image);
             $category-> delete();
             return response(['status' => 'success','message' => 'Deleted Successfully']);
         }catch( \Exception $e){
