@@ -84,6 +84,8 @@
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
   <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
+  
+
   @stack('scripts')
 
 </body>

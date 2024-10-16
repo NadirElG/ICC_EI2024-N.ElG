@@ -22,14 +22,19 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'category.action')
+            ->addColumn('action', function ($query) {
+                $edit = "<a href='".route('admin.category.edit', $query->id)."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
+                $delete = "<a href='' class='btn btn-danger'><i class='fas fa-trash'></i></a>";
+
+                return $edit. '  ' .$delete;
+            })
             ->editColumn('status', function ($category) {
                 return $category->status ? 'Active' : 'Inactive';
             })
             ->editColumn('created_at', function ($category) {
                 return \Carbon\Carbon::parse($category->created_at)->diffForHumans();
             })
-            ->rawColumns(['image', 'action']) // Pour rendre le HTML brut
+            ->rawColumns(['action']) // Pour rendre le HTML brut pour les actions
             ->setRowId('id');
     }
     
@@ -74,12 +79,12 @@ class CategoryDataTable extends DataTable
             Column::make('name'),
             Column::make('description'),
             Column::make('status'),
-            Column::make('image'),
-            Column::make('created_at'),
+            //Column::make('image'),
+            //Column::make('created_at'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
-                ->width(60)
+                ->width(200)
                 ->addClass('text-center'),
         ];
     }
