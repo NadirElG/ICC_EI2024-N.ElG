@@ -28,13 +28,21 @@ class CategoryDataTable extends DataTable
 
                 return $edit. '  ' .$delete;
             })
-            ->editColumn('status', function ($category) {
-                return $category->status ? 'Active' : 'Inactive';
+            ->addColumn('image',function($query){
+                return '<img width="100px" src="'.asset($query->image).'">';
+            })
+            ->addColumn('status', function($query){
+                if($query->status === 1){
+                    return '<span class="badge badge-success">Active</span>';
+                }else {
+                    return '<span class="badge badge-danger">Inactive</span>';
+                }
             })
             ->editColumn('created_at', function ($category) {
                 return \Carbon\Carbon::parse($category->created_at)->diffForHumans();
             })
-            ->rawColumns(['action']) // Pour rendre le HTML brut pour les actions
+
+            ->rawColumns(['image' , 'action' , 'status'])
             ->setRowId('id');
     }
     
@@ -57,7 +65,7 @@ class CategoryDataTable extends DataTable
                     ->setTableId('category-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -77,9 +85,9 @@ class CategoryDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name'),
+            Column::make('image'),
             Column::make('description'),
             Column::make('status'),
-            //Column::make('image'),
             //Column::make('created_at'),
             Column::computed('action')
                 ->exportable(false)
