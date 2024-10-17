@@ -23,6 +23,10 @@ class UserWalletDataTable extends DataTable
             ->addColumn('wallet_balance', function ($user) {
                 return $user->wallet->balance ?? 0; // Assure-toi que la relation wallet existe
             })
+            ->addColumn('role', function ($user) {
+                return $user->role; 
+            })
+            
             ->addColumn('action', function ($query) {
                 $view = "<a href='#' class='btn btn-primary'><i class='fas fa-eye'></i></a>";
                 $edit = "<a href='#' class='btn btn-warning'><i class='fas fa-edit'></i></a>";
@@ -81,10 +85,12 @@ class UserWalletDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('wallet_balance'),
-            Column::make('status'), // Ajout de la colonne status ici
+            Column::make('id')->addClass('text-center'),
+            Column::make('name')->addClass('text-center'),
+            Column::make('wallet_balance')->addClass('text-center'),
+            Column::make('status')->addClass('text-center'),
+            Column::make('role')->addClass('text-center'),
+
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
