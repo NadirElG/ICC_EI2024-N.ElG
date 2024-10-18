@@ -1,8 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\Backend\AdminController;  // Import AdminController
 use App\Http\Controllers\Backend\CoachController;  // Import CoachController
+
+use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
+use App\Http\Controllers\Gateways\StripeController;  // Import PlanController
+
+
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +36,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
+
+    Route::post('stripe/payment',[StripeController::class , 'payment'])->name('stripe.payment');
+    Route::get('stripe/success',[StripeController::class , 'success'])->name('stripe.success');
+    Route::get('stripe/cancel',[StripeController::class , 'cancel'])->name('stripe.cancel');
 });
 
 require __DIR__.'/auth.php';
