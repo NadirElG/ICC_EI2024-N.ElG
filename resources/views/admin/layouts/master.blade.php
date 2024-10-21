@@ -88,12 +88,11 @@
   <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 
   <script>
-
     // $.ajaxSetup({
-    //   headers:{
-    //     'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-    //   }
-    // });
+    //    headers:{
+    //      'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    //    }
+    //  });
 
 $(document).ready(function() {
     $('body').on('click', '.delete-item', function(e){
@@ -135,8 +134,8 @@ $(document).ready(function() {
         });
     });
 });
-
 </script>
+
 
 
   @stack('scripts')

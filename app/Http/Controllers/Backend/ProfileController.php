@@ -33,6 +33,8 @@ class ProfileController extends Controller
         $user->save();
     
         // Rediriger avec un message de succès
+
+        //toastr()->success('Peofile updated successfully');
         return redirect()->route('admin.profile')->with('success', 'Profile updated successfully.');
     }
     

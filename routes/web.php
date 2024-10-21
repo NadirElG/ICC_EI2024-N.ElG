@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+
+    
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
 
     Route::post('stripe/payment',[StripeController::class , 'payment'])->name('stripe.payment');
