@@ -5,6 +5,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;  // Import AdminController
 use App\Http\Controllers\Backend\CoachController;  // Import CoachController
 
+
+use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
+
 use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
 use App\Http\Controllers\Gateways\StripeController;  // Import PlanController
 
@@ -37,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/home' , [HomeController::class, 'index'])->name('home');
 
     
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
