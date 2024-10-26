@@ -31,19 +31,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'name' => 'required|string|max:100',
+            'username' => 'required|string|max:100|unique:users',
+            'email' => 'required|string|email|max:150|unique:users',
+            'password' => 'required|min:8|confirmed'
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
-
             'email' => $request->email,
-            
             'password' => Hash::make($request->password),
+        ]);
+
+        // Initialisation du portefeuille de l'utilisateur
+        $user->wallet()->create([
+            'balance' => 0, // Solde initial
         ]);
 
         event(new Registered($user));

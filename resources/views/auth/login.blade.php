@@ -9,22 +9,21 @@
         rel="stylesheet">
     <title>SLOTEAM</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.nice-number.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.calendar.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/add_row_custon.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/mobile_menu.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/multiple-image-video.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/ranger_style.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.classycountdown.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css')}}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.nice-number.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/add_row_custon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/mobile_menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/multiple-image-video.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/ranger_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.classycountdown.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
 
@@ -57,11 +56,11 @@
                                     @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                                            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email">
                                         </div>
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input id="password" type="password" name="password" placeholder="Password">
+                                            <input type="password" name="password" placeholder="Password">
                                         </div>
                                         <div class="wsus__login_save">
                                             <div class="form-check form-switch">
@@ -83,38 +82,39 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-profiles" role="tabpanel"
-                                aria-labelledby="pills-profile-tab2">
-                                <div class="wsus__login">
-                                    <form>
+                            <div class="tab-pane fade" id="pills-profiles" role="tabpanel" aria-labelledby="pills-profile-tab2">
+                            <div class="wsus__login">
+                                    <form method="POST" action="{{ route('register') }}">
+                                        @csrf
                                         <div class="wsus__login_input">
                                             <i class="fas fa-user-tie"></i>
-                                            <input type="text" placeholder="Name">
+                                            <input name="name" type="text" placeholder="Name">
                                         </div>
+
+                                        <div class="wsus__login_input">
+                                            <i class="fas fa-user-tie"></i>
+                                            <input name="username" type="text" placeholder="Username">
+                                        </div>
+
                                         <div class="wsus__login_input">
                                             <i class="far fa-envelope"></i>
-                                            <input type="text" placeholder="Email">
+                                            <input name="email" type="email" placeholder="Email">
                                         </div>
+
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input type="text" placeholder="Password">
+                                            <input name="password" type="password" placeholder="Password">
                                         </div>
+
                                         <div class="wsus__login_input">
                                             <i class="fas fa-key"></i>
-                                            <input type="text" placeholder="Confirm Password">
+                                            <input name="password_confirmation" type="password"  placeholder="Confirm Password">
                                         </div>
-                                        <div class="wsus__login_save">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox"
-                                                    id="flexSwitchCheckDefault03">
-                                                <label class="form-check-label" for="flexSwitchCheckDefault03">I consent
-                                                    to the privacy policy</label>
-                                            </div>
-                                        </div>
-                                        <button class="common_btn" type="submit">signup</button>
+
+                                        <button class="common_btn mt-4" type="submit">signup</button>
                                     </form>
                                 </div>
-                            </div>
+</div>
                         </div>
                     </div>
                 </div>
@@ -137,42 +137,42 @@
 
 
     <!--jquery library js-->
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <!--bootstrap js-->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!--font-awesome js-->
-    <script src="js/Font-Awesome.js"></script>
-    <!--select2 js-->
-    <script src="js/select2.min.js"></script>
-    <!--slick slider js-->
-    <script src="js/slick.min.js"></script>
-    <!--simplyCountdown js-->
-    <script src="js/simplyCountdown.js"></script>
-    <!--product zoomer js-->
-    <script src="js/jquery.exzoom.js"></script>
-    <!--nice-number js-->
-    <script src="js/jquery.nice-number.min.js"></script>
-    <!--counter js-->
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.countup.min.js"></script>
-    <!--add row js-->
-    <script src="js/add_row_custon.js"></script>
-    <!--multiple-image-video js-->
-    <script src="js/multiple-image-video.js"></script>
-    <!--sticky sidebar js-->
-    <script src="js/sticky_sidebar.js"></script>
-    <!--price ranger js-->
-    <script src="js/ranger_jquery-ui.min.js"></script>
-    <script src="js/ranger_slider.js"></script>
-    <!--isotope js-->
-    <script src="js/isotope.pkgd.min.js"></script>
-    <!--venobox js-->
-    <script src="js/venobox.min.js"></script>
-    <!--classycountdown js-->
-    <script src="js/jquery.classycountdown.js"></script>
+<script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
+<!--bootstrap js-->
+<script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+<!--font-awesome js-->
+<script src="{{ asset('frontend/js/Font-Awesome.js') }}"></script>
+<!--select2 js-->
+<script src="{{ asset('frontend/js/select2.min.js') }}"></script>
+<!--slick slider js-->
+<script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+<!--simplyCountdown js-->
+<script src="{{ asset('frontend/js/simplyCountdown.js') }}"></script>
+<!--product zoomer js-->
+<script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
+<!--nice-number js-->
+<script src="{{ asset('frontend/js/jquery.nice-number.min.js') }}"></script>
+<!--counter js-->
+<script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery.countup.min.js') }}"></script>
+<!--add row js-->
+<script src="{{ asset('frontend/js/add_row_custon.js') }}"></script>
+<!--multiple-image-video js-->
+<script src="{{ asset('frontend/js/multiple-image-video.js') }}"></script>
+<!--sticky sidebar js-->
+<script src="{{ asset('frontend/js/sticky_sidebar.js') }}"></script>
+<!--price ranger js-->
+<script src="{{ asset('frontend/js/ranger_jquery-ui.min.js') }}"></script>
+<script src="{{ asset('frontend/js/ranger_slider.js') }}"></script>
+<!--isotope js-->
+<script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
+<!--venobox js-->
+<script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
+<!--classycountdown js-->
+<script src="{{ asset('frontend/js/jquery.classycountdown.js') }}"></script>
 
-    <!--main/custom js-->
-    <script src="js/main.js"></script>
+<!--main/custom js-->
+<script src="{{ asset('frontend/js/main.js') }}"></script>
 
 </body>
 
