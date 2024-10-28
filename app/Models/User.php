@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wallet::class);
     }
+
+    public function slots()
+    {
+        return $this->hasMany(Slot::class, 'coach_id');
+    }
 }
