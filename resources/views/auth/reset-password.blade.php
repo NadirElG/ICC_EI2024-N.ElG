@@ -1,39 +1,118 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <title>SLOTeam</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.nice-number.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/add_row_custon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/mobile_menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/multiple-image-video.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/ranger_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.classycountdown.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+<body>
+
+    <!--============================
+        CHANGE PASSWORD START
+    ==============================-->
+    <section id="wsus__login_register">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-md-10 col-lg-7 m-auto">
+                    <form method="POST" action="{{ route('password.store') }}">
+                        @csrf
+                        <div class="wsus__change_password">
+                            <h4>Reset Password</h4>
+                            <!-- Password Reset Taken -->
+                            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                            <div class="wsus__single_pass">
+                                <label>email</label>
+                                <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                            </div>
+                            <div class="wsus__single_pass">
+                                <label>new password</label>
+                                <input id="password" type="password" name="password" placeholder="New Password">
+                            </div>
+                            <div class="wsus__single_pass">
+                                <label>confirm password</label>
+                                <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password">
+                            </div>
+                            <button class="common_btn" type="submit">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+    </section>
+    <!--============================
+        CHANGE PASSWORD END
+    ==============================-->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <!--============================
+        SCROLL BUTTON START
+    ==============================-->
+    <div class="wsus__scroll_btn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <!--============================
+        SCROLL BUTTON  END
+    ==============================-->
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+<!--jquery library js-->
+<script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
+    <!--bootstrap js-->
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <!--font-awesome js-->
+    <script src="{{ asset('frontend/js/Font-Awesome.js') }}"></script>
+    <!--select2 js-->
+    <script src="{{ asset('frontend/js/select2.min.js') }}"></script>
+    <!--slick slider js-->
+    <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+    <!--simplyCountdown js-->
+    <script src="{{ asset('frontend/js/simplyCountdown.js') }}"></script>
+    <!--product zoomer js-->
+    <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
+    <!--nice-number js-->
+    <script src="{{ asset('frontend/js/jquery.nice-number.min.js') }}"></script>
+    <!--counter js-->
+    <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.countup.min.js') }}"></script>
+    <!--add row js-->
+    <script src="{{ asset('frontend/js/add_row_custon.js') }}"></script>
+    <!--multiple-image-video js-->
+    <script src="{{ asset('frontend/js/multiple-image-video.js') }}"></script>
+    <!--sticky sidebar js-->
+    <script src="{{ asset('frontend/js/sticky_sidebar.js') }}"></script>
+    <!--price ranger js-->
+    <script src="{{ asset('frontend/js/ranger_jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/ranger_slider.js') }}"></script>
+    <!--isotope js-->
+    <script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
+    <!--venobox js-->
+    <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
+    <!--classycountdown js-->
+    <script src="{{ asset('frontend/js/jquery.classycountdown.js') }}"></script>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+    <!--main/custom js-->
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
+</body>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

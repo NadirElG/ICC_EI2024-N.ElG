@@ -35,7 +35,6 @@
       <nav class="nav nav-masthead justify-content-center">
         @guest
           <a class="nav-link active" href="{{ route('login') }}">Se connecter</a>
-          <a class="nav-link" href="{{ route('register') }}">S'inscrire</a>
         @else
           <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
         @endguest
@@ -48,7 +47,7 @@
     <p class="lead">SloTeam est votre plateforme idéale pour réserver des séances de sport, gérer vos entraînements, et bien plus encore. Créez un compte ou connectez-vous pour découvrir tous les avantages.</p>
     <p class="lead">
       @guest
-        <a href="{{ route('register') }}" class="btn btn-lg btn-secondary">Rejoindre maintenant</a>
+        <a href="{{ route('login') }}" class="btn btn-lg btn-secondary">Rejoindre maintenant</a>
       @else
         <a href="{{ route('dashboard') }}" class="btn btn-lg btn-primary">Accéder à mon dashboard</a>
       @endguest

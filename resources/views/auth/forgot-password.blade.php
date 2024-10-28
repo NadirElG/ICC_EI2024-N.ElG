@@ -1,25 +1,133 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <title>SLOTeam</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="{{ asset('frontend/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.nice-number.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.calendar.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/add_row_custon.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/mobile_menu.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.exzoom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/multiple-image-video.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/ranger_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.classycountdown.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+</head>
+
+<body>
+
+    <!-- 
+    Affichage des messages de succès
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    Affichage des messages d'erreur 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    -->
+
+    <!--============================
+        FORGET PASSWORD START
+    ==============================-->
+    <section id="wsus__login_register">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 m-auto">
+                    <div class="wsus__forget_area">
+                        <span class="qiestion_icon"><i class="fal fa-question-circle"></i></span>
+                        <h4>Mot de passe oublié&nbsp;?</h4>
+                        <p>Entrez l'adresse email enregistrée avec <span>SLOTeam</span></p>
+                        <div class="wsus__login">
+                            <form method="POST" action="{{ route('password.email') }}">
+                                @csrf
+                                <div class="wsus__login_input">
+                                    <i class="fal fa-envelope"></i>
+                                    <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Votre Email">
+                                </div>
+                                <button class="common_btn" type="submit">Envoyer</button>
+                            </form>
+                        </div>
+                        <a class="see_btn mt-4" href="{{ route('login') }}">Aller à la connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--============================
+        FORGET PASSWORD END
+    ==============================-->
+
+
+    <!--============================
+        SCROLL BUTTON START
+    ==============================-->
+    <div class="wsus__scroll_btn">
+        <i class="fas fa-chevron-up"></i>
     </div>
+    <!--============================
+        SCROLL BUTTON END
+    ==============================-->
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
+    <!--jquery library js-->
+    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
+    <!--bootstrap js-->
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <!--font-awesome js-->
+    <script src="{{ asset('frontend/js/Font-Awesome.js') }}"></script>
+    <!--select2 js-->
+    <script src="{{ asset('frontend/js/select2.min.js') }}"></script>
+    <!--slick slider js-->
+    <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+    <!--simplyCountdown js-->
+    <script src="{{ asset('frontend/js/simplyCountdown.js') }}"></script>
+    <!--product zoomer js-->
+    <script src="{{ asset('frontend/js/jquery.exzoom.js') }}"></script>
+    <!--nice-number js-->
+    <script src="{{ asset('frontend/js/jquery.nice-number.min.js') }}"></script>
+    <!--counter js-->
+    <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.countup.min.js') }}"></script>
+    <!--add row js-->
+    <script src="{{ asset('frontend/js/add_row_custon.js') }}"></script>
+    <!--multiple-image-video js-->
+    <script src="{{ asset('frontend/js/multiple-image-video.js') }}"></script>
+    <!--sticky sidebar js-->
+    <script src="{{ asset('frontend/js/sticky_sidebar.js') }}"></script>
+    <!--price ranger js-->
+    <script src="{{ asset('frontend/js/ranger_jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/ranger_slider.js') }}"></script>
+    <!--isotope js-->
+    <script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
+    <!--venobox js-->
+    <script src="{{ asset('frontend/js/venobox.min.js') }}"></script>
+    <!--classycountdown js-->
+    <script src="{{ asset('frontend/js/jquery.classycountdown.js') }}"></script>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+    <!--main/custom js-->
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
+</body>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>
