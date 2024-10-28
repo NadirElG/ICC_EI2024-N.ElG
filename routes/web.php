@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CoachController;  // Import CoachController
 use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
 
 use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
+use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Gateways\StripeController;  // Import PlanController
 
 
@@ -31,9 +32,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* Previous route for dashboard
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,13 +46,17 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/home' , [HomeController::class, 'index'])->name('home');
 
-    
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
 
     Route::post('stripe/payment',[StripeController::class , 'payment'])->name('stripe.payment');
     Route::get('stripe/success',[StripeController::class , 'success'])->name('stripe.success');
     Route::get('stripe/cancel',[StripeController::class , 'cancel'])->name('stripe.cancel');
 });
+
+Route::group(['middleware' => ['auth','verified'], 'prefix' => 'user', 'as' => 'user.' ], function(){
+    Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+});
+
 
 require __DIR__.'/auth.php';
 

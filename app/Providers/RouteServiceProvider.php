@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    public const HOME = 'user/dashboard';
 
     /**
      * Définir les liaisons de modèle de route, les filtres de motifs

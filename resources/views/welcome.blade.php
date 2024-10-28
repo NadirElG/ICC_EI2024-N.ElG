@@ -36,7 +36,7 @@
         @guest
           <a class="nav-link active" href="{{ route('login') }}">Se connecter</a>
         @else
-          <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+          <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
         @endguest
       </nav>
     </div>
@@ -49,7 +49,7 @@
       @guest
         <a href="{{ route('login') }}" class="btn btn-lg btn-secondary">Rejoindre maintenant</a>
       @else
-        <a href="{{ route('dashboard') }}" class="btn btn-lg btn-primary">Accéder à mon dashboard</a>
+        <a href="{{ route('user.dashboard') }}" class="btn btn-lg btn-primary">Accéder à mon dashboard</a>
       @endguest
     </p>
   </main>
