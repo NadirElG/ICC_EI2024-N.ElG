@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserProfileController extends Controller
+
+class CoachProfileController extends Controller
 {
     public function index()
     {
-        return view('frontend.dashboard.profile');
+        return view('coach.dashboard.profile');
     }
 
     public function updateProfile(Request $request)
