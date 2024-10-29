@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
 
 use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
 use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Gateways\StripeController;  // Import PlanController
 
 
@@ -45,7 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/home' , [HomeController::class, 'index'])->name('home');
-
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
 
     Route::post('stripe/payment',[StripeController::class , 'payment'])->name('stripe.payment');
@@ -55,6 +55,9 @@ Route::middleware('auth')->group(function () {
 
 Route::group(['middleware' => ['auth','verified'], 'prefix' => 'user', 'as' => 'user.' ], function(){
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('profile',[UserProfileController::class, 'index'])->name('profile');
+    Route::put('profile',[UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('profile',  [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
 
 

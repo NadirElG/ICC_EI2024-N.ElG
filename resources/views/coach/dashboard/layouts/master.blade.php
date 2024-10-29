@@ -29,29 +29,27 @@
 
 <body>
 
-
   <!--=============================
     DASHBOARD MENU START
   ==============================-->
   <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
       <img src="images/dashboard_user.jpg" alt="img" class="img-fluid">
-      <p>anik roy</p>
     </div>
   </div>
   <!--=============================
     DASHBOARD MENU END
   ==============================-->
 
-
-  <!--=============================
-    DASHBOARD START
-  ==============================-->
-    @yield('content')
   <!--=============================
     DASHBOARD START
   ==============================-->
 
+  @yield('content')
+
+  <!--=============================
+    DASHBOARD END
+  ==============================-->
 
   <!--============================
       SCROLL BUTTON START
@@ -62,7 +60,6 @@
   <!--============================
     SCROLL BUTTON  END
   ==============================-->
-
 
   <!--jquery library js-->
   <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>

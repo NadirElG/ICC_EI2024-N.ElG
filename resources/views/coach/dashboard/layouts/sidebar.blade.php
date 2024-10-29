@@ -19,4 +19,4 @@
               <i class="far fa-sign-out-alt"></i> Log out</a>
           </li>
         </ul>
-      </div>
+</div>

@@ -20,6 +20,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/assets/css/components.css') }}">
+  <link rel="stylesheet" href="//cdnjs.cloudfare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   
   <!-- Start GA -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
@@ -77,6 +78,7 @@
   <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
   <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+  <script src="cdnjs.cloudfare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
@@ -94,49 +96,47 @@
     //    }
     //  });
 
-$(document).ready(function() {
-    $('body').on('click', '.delete-item', function(e){
-        e.preventDefault()
-        let url = $(this).attr('href');
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                  method: 'DELETE',
-                  url: url,
-                  data: {
-                    _token: "{{ csrf_token() }}" // Récupère le token depuis la balise <meta>
-                  },
-                  success: function(response){
-                    if(response.status === 'success'){
-                      window.location.reload();
-                    } else if(response.status === 'error'){
-                      console.error(response.message);
+  $(document).ready(function() {
+      $('body').on('click', '.delete-item', function(e){
+          e.preventDefault()
+          let url = $(this).attr('href');
+          Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  $.ajax({
+                    method: 'DELETE',
+                    url: url,
+                    data: {
+                      _token: "{{ csrf_token() }}" // Récupère le token depuis la balise <meta>
+                    },
+                    success: function(response){
+                      if(response.status === 'success'){
+                        window.location.reload();
+                      } else if(response.status === 'error'){
+                        console.error(response.message);
+                      }
+                    },
+                    error: function(error){
+                      console.error(error);
                     }
-                  },
-                  error: function(error){
-                    console.error(error);
-                  }
-                });
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                }); 
-            }
-        });
-    });
-});
+                  });
+                  Swal.fire({
+                      title: "Deleted!",
+                      text: "Your file has been deleted.",
+                      icon: "success"
+                  }); 
+              }
+          });
+      });
+  });
 </script>
-
-
 
   @stack('scripts')
 
