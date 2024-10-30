@@ -34,7 +34,7 @@ class CreateSlotsTable extends Migration
             $table->foreign('coach_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-
+    
     /**
      * Annule les migrations.
      */

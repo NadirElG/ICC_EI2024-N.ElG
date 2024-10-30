@@ -6,19 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Slot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\DataTables\SlotsDataTable;
-
 
 class SlotController extends Controller
 {
     /**
      * Affiche la liste des slots du coach.
      */
-    public function index(SlotsDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('coach.dashboard.slots.index');
+        return view('coach.dashboard.slots.index');
     }
-
+    
     /**
      * Affiche le formulaire de création d'un nouveau slot.
      */
