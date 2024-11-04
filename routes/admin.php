@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\UserWalletController; // Ajout de l'import du contrôleur UserWalletController
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,8 @@ Route::resource('category', CategoryController::class);
 
 /*User Wallets*/
 Route::resource('users-wallets', UserWalletController::class);
+
+/*Subscribers route*/
+Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscribers.index');
+Route::delete('subscribers/{id}', [SubscribersController::class, 'destroy'])->name('subscribers.destroy');
+Route::post('subscribers-send-mail' , [SubscribersController::class, 'sendMail'])->name('subscribers-send-mail');
