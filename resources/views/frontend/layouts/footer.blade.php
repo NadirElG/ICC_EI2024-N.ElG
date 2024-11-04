@@ -35,9 +35,10 @@
                         <h3>Subscribe To Our Newsletter</h3>
                         <p>Get all the latest information on Events, Sales and Offers.
                             Get all the latest information on Events.</p>
-                        <form>
-                            <input type="text" placeholder="Search...">
-                            <button type="submit" class="common_btn">subscribe</button>
+                        <form class="{{ route('newsletter-request') }}" method="POST" id="newsletter">
+                            @csrf
+                            <input type="text" class="newsletter_email" placeholder="Subscribe" name="email">
+                            <button type="submit" class="common_btn subscribe_btn">subscribe</button>
                         </form>
                         <div class="footer_payment">
                             <p>We're using safe payment for :</p>
@@ -59,3 +60,46 @@
             </div>
         </div>
     </footer>
+
+
+    
+    @push('scripts')
+        <script>
+            $('#newsletter').on('submit', function(e)
+        {
+            e.preventDefault();
+            let data = $(this).serialize();
+
+            $.ajax({
+                method : 'POST',
+                url : "{{ ('newsletter-request') }}",
+                data : data,
+                beforeSend :  function(){
+                    $('.subscribe_btn').text('Loading...')
+                },
+                success: function(data){
+                    if(data.status === 'success'){
+                        $('.subscribe_btn').text('SLOTScribe');
+                        $('.newsletter_email').val('');
+                        alert(data.message); // Utilisation d'une alerte pour le succès
+                    }else if (data.status === 'error'){
+                        $('.subscribe_btn').text('SLOTScribe')
+                        alert(data.message); // Utilisation d'une alerte pour l'erreur
+                    }
+                },
+                error: function(data){
+                    let errors = data.responseJSON.errors;
+                    if(errors){
+                        $.each(errors, function(key, value){
+                            alert(value);
+                            //toastr.error(value);
+                        })
+                    }
+                    $('.subscribe_btn').text('SLOTScribe')
+
+                }
+            })
+        })
+        </script>
+    @endpush
+    

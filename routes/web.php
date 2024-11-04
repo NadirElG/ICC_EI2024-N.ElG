@@ -2,10 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\Backend\AdminController;  // Import AdminController
-use App\Http\Controllers\Backend\CoachController;  // Import CoachController
-
-
 use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
 
 use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
@@ -33,19 +29,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Previous route for dashboard
-Route::get('/dashboard', function () {
-    return view('frontend.dashboard.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-*/
-
 
 Route::middleware('auth')->group(function () {
+    Route::get('/home' , [HomeController::class, 'index'])->name('home');
+    Route::post('/newsletter-request', [HomeController::class,'newsLetterRequest'])->name('newsletter-request');
+    Route::get('/newsletter-verify/{token}', [HomeController::class,'newsLetterEmailVerify'])->name('newsletter-verify');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/home' , [HomeController::class, 'index'])->name('home');
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans');
 
     Route::post('stripe/payment',[StripeController::class , 'payment'])->name('stripe.payment');
@@ -59,6 +53,8 @@ Route::group(['middleware' => ['auth','verified'], 'prefix' => 'user', 'as' => '
     Route::put('profile',[UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile',  [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
+
+
 
 
 require __DIR__.'/auth.php';

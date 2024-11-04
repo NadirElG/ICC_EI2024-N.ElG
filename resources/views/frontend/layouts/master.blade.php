@@ -29,6 +29,19 @@
 </head>
 
 <body>
+    
+    <!--============================
+        ERROR NOTIFICATIONS START
+    ==============================-->
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+    <!--============================
+        ERROR NOTIFICATIONS END
+    ==============================-->
+
     <!--============================
         HEADER START
     ==============================-->
@@ -111,7 +124,7 @@
 <!--main/custom js-->
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
-
+@stack('scripts')
 
 </body>
 

@@ -22,7 +22,7 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <!-- Authentication -->
+              <!-- Authentication logout-->
                 <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                  @csrf
                 </form>
