@@ -12,4 +12,5 @@ class UserDashboardController extends Controller
         return view('frontend.dashboard.dashboard');
 
     }
+
 }

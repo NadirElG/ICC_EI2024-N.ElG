@@ -12,13 +12,13 @@
             <li class="dropdown active">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               <ul class="dropdown-menu">
-                <li class=active><a class="nav-link" href="index-0.html">Admin Dashboard</a></li>
+                <li class=active><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                 <li><a class="nav-link" href="index.html">Sloteam Dashboard</a></li>
               </ul>
             </li>
             <li class="menu-header">Starter</li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>MENU 1</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>USERS</span></a>
               <ul class="dropdown-menu">
               <li><a class="nav-link" href="{{ route('admin.users-wallets.index') }}">User</a></li>
               <li><a class="nav-link" href="{{ route('admin.subscribers.index') }}">Subscribers</a></li>
@@ -30,10 +30,14 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Category</span></a>
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                <i class="fas fa-columns"></i> 
+                <span>SLOTS</span>
+              </a>
               <ul class="dropdown-menu">
-              <li><a class="nav-link" href="{{ route('admin.category.index') }}"><span>View Category</span></a></li>
-                <li><a class="nav-link" href="{{ route('admin.category.create') }}">Create Category</a></li>
+              <li>
+                <a class="nav-link" href="{{ route('admin.category.index') }}"><span>View Category</span></a>
+              </li>
               </ul>
             </li>
             

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CoachRequestController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
@@ -53,6 +54,12 @@ Route::group(['middleware' => ['auth','verified'], 'prefix' => 'user', 'as' => '
     Route::put('profile',[UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile',  [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
+
+Route::group(['middleware' => ['auth','verified'], 'prefix' => 'user', 'as' => 'user.' ], function(){
+    Route::get('request-coach-form', [CoachRequestController::class, 'index'])->name('request_coach_form');
+    Route::post('submit-coach-request', [CoachRequestController::class, 'store'])->name('submit_coach_request');
+});
+
 
 
 

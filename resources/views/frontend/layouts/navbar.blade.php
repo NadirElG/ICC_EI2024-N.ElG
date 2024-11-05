@@ -30,13 +30,25 @@
                         <li><a class="active" href="#">Home</a></li>
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="#">My Account</a></li>
-                        <li class="wsus__relative_li"><a href="#">More <i class="fas fa-caret-down"></i></a>
-                            <ul class="wsus__menu_droapdown">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                            </ul>
-                        </li>
+                        <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+                        <ul class="wsus__menu_droapdown">
+                            @auth
+                                <!-- Liens vers les dashboards selon le rôle de l’utilisateur -->
+                                @if(Auth::user()->role === 'admin')
+                                    <li><a href="{{ route('admin.dashboard') }}">Admin Dashboard</a></li>
+                                    <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
+                                @elseif(Auth::user()->role === 'coach')
+                                    <li><a href="{{ route('coach.dashboard') }}">Coach Dashboard</a></li>
+                                @else
+                                    <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
+                                @endif
+                            @else
+                                <!-- Option pour les utilisateurs non connectés -->
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            @endauth
+                        </ul>
+                    </li>
+
                     </ul>
 
                     <!-- Account and Logout -->
