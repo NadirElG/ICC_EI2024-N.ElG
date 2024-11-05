@@ -15,7 +15,7 @@
                     <div class="wsus__dashboard_profile">
                         <div class="wsus__dash_pro_area">
                             <h4>Slot Information</h4>
-                            <form action="" method="POST">
+                            <form action="{{ route('coach.slots.create') }}" method="POST">
                                 @csrf
                                 <div class="col-xl-9">
                                     <div class="row">

@@ -14,6 +14,8 @@ Route::middleware(['auth', 'role:coach'])->group(function () {
     // Route pour afficher la liste des slots
     Route::get('slots', [SlotController::class, 'index'])->name('slots');
     Route::get('slots/create', [SlotController::class, 'create'])->name('slots.create');
+    Route::post('slots/create', [SlotController::class, 'store'])->name('slots.create');
+
     
 
     Route::get('profile' , [CoachProfileController::class, 'index'])->name('profile');

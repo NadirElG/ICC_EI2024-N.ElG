@@ -40,16 +40,32 @@ class SlotController extends Controller
             'end_time' => 'required|date_format:H:i|after:start_time',
             'capacity' => 'required|integer|min:1',
             'location' => 'nullable|string|max:255',
-            'price' => 'nullable|numeric|min:0',
+            'price' => 'nullable|integer|min:0', // Utilisation de integer pour le prix
         ]);
 
-        // Création du slot pour le coach connecté
-        Auth::user()->slots()->create($request->all());
+        // Créer une nouvelle instance de Slot
+        $slot = new Slot();
+        
+        // Assigner les valeurs du formulaire à l'objet Slot
+        $slot->title = $request->input('title');
+        $slot->description = $request->input('description');
+        $slot->date = $request->input('date');
+        $slot->start_time = $request->input('start_time');
+        $slot->end_time = $request->input('end_time');
+        $slot->capacity = $request->input('capacity');
+        $slot->location = $request->input('location');
+        $slot->price = $request->input('price');
+        
+        // Associer le slot au coach connecté
+        $slot->coach_id = Auth::id();
 
-        // Redirection avec message de succès
-        return redirect()->route('slots.index')->with('success', 'Slot créé avec succès.');
+        // Sauvegarder le slot dans la base de données
+        $slot->save();
+
+        // Redirection avec un message de succès
+        return redirect()->route('coach.slots')->with('success', 'Slot créé avec succès.');
     }
-
+    
     /**
      * Affiche le formulaire d'édition d'un slot existant.
      */
