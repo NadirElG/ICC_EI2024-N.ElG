@@ -14,9 +14,12 @@ class SlotController extends Controller
      */
     public function index()
     {
-        return view('coach.dashboard.slots.index');
+        // Récupère les slots pour le coach connecté
+        $slots = Auth::user()->slots;
+
+        return view('coach.dashboard.slots.index', compact('slots'));
     }
-    
+
     /**
      * Affiche le formulaire de création d'un nouveau slot.
      */
@@ -65,7 +68,7 @@ class SlotController extends Controller
         // Redirection avec un message de succès
         return redirect()->route('coach.slots')->with('success', 'Slot créé avec succès.');
     }
-    
+
     /**
      * Affiche le formulaire d'édition d'un slot existant.
      */
