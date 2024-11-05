@@ -54,10 +54,14 @@ class CoachRequestController extends Controller
         if ($request->hasFile($fieldName)) {
             $file = $request->file($fieldName);
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('certifications', $fileName, 'public');
-            
-            return $filePath;
+            $filePath = '/certifications/' . $fileName;
+    
+            // Enregistrer le fichier dans le dossier public/certifications
+            $file->move(public_path('certifications'), $fileName);
+    
+            return $filePath; // Retourne le chemin relatif depuis public
         }
         return null;
     }
+    
 }

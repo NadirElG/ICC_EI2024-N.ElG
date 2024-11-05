@@ -5,8 +5,9 @@
         </span>
         <a href="dsahboard.html" class="dash_logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo" class="img-fluid"></a>
         <ul class="dashboard_link">
+          <li><a href="{{ route('home') }}"><i class="bi bi-house-door"></i>Home</a></li>
           <li><a class="active" href="{{ route('user.dashboard') }}"><i class="fas fa-tachometer"></i>Dashboard</a></li>
-          <li><a href="dsahboard_order.html"><i class="fas fa-list-ul"></i> Orders</a></li>
+          <li><a href="{{ route('plans') }}"><i class="bi bi-bag-plus"></i>Plans</a></li>
           <!-- 
           <li><a href="dsahboard_download.html"><i class="far fa-cloud-download-alt"></i> Downloads</a></li>
           <li><a href="dsahboard_review.html"><i class="far fa-star"></i> Reviews</a></li>
