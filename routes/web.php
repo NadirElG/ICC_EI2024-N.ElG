@@ -1,17 +1,14 @@
 <?php
 
-use App\Http\Controllers\Frontend\CoachRequestController;
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Controllers\Frontend\HomeController;  // Import HomeController
-
-use App\Http\Controllers\Frontend\PlanController;  // Import PlanControlle
+use App\Http\Controllers\Frontend\HomeController; 
+use App\Http\Controllers\Frontend\PlanController;  
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
-use App\Http\Controllers\Gateways\StripeController;  // Import PlanController
+use App\Http\Controllers\Frontend\CoachRequestController;
 
-
-
+use App\Http\Controllers\Gateways\StripeController;  
 
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +30,8 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/home' , [HomeController::class, 'index'])->name('home');
+    Route::get('/about-us' , [HomeController::class, 'aboutUs'])->name('about-us');
+
     Route::post('/newsletter-request', [HomeController::class,'newsLetterRequest'])->name('newsletter-request');
     Route::get('/newsletter-verify/{token}', [HomeController::class,'newsLetterEmailVerify'])->name('newsletter-verify');
 
