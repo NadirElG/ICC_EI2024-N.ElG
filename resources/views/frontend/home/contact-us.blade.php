@@ -40,33 +40,35 @@
                 <div class="col-xl-8">
                     <div class="wsus__contact_question">
                         <h5>Send Us a Message</h5>
-                        <form>
+                        <form id="contact-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="Your Name" required>
+                                        <input type="text" placeholder="Your Name" name="name">
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__con_form_single">
-                                        <input type="email" placeholder="Email" required>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6">
-                                    <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="Subject" required>
+                                        <input type="email" placeholder="Email" name="email">
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__con_form_single">
-                                        <textarea cols="3" rows="5" placeholder="Message" required></textarea>
+                                        <input type="text" placeholder="Phone : ex : +32 488 88 88 88" name="phone">
                                     </div>
-                                    <button type="submit" class="common_btn">Send Now</button>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="wsus__con_form_single">
+                                        <input type="text" placeholder="Subject" name="subject" >
+                                    </div>
+                                </div>
+                                
+                                <div class="col-xl-12">
+                                    <div class="wsus__con_form_single">
+                                        <textarea cols="3" rows="5" placeholder="Message" name="message"></textarea>
+                                    </div>
+                                    <button id="form-submit" type="submit" class="common_btn">Send</button>
                                 </div>
                             </div>
                         </form>
@@ -88,3 +90,49 @@
 ==============================-->
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function()
+        {
+            $('#contact-form').on('submit', function(e)
+            {
+                e.preventDefault();
+                let data = $(this).serialize();
+                $.ajax({
+                    method: 'POST', 
+                    url : "{{ route('handle-contact-form') }}",
+                    data :  data, 
+                    beforeSend: function()
+                    {
+                        $('#form-submit').text('sending...');
+                        $('#form-submit').attr('disabled', true);
+                    },
+                    success: function(data)
+                    {
+                        if(data.status == 'success')
+                        {
+                            alert(data.message);
+                            $('#contact-form')[0].reset();
+                            $('#form-submit').text('Send');
+                            $('#form-submit').attr('disabled', false);
+
+                        }
+                    },
+                    error: function(data){
+                    let errors = data.responseJSON.errors;
+                    if(errors){
+                        $.each(errors, function(key, value){
+                            alert(value);
+                            //toastr.error(value);
+                        })
+                        $('#form-submit').text('Send');
+                        $('#form-submit').attr('disabled', false);
+
+                    }
+                }
+                })
+            })
+        })
+    </script>
+@endpush

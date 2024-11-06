@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactUs;
 use App\Mail\SubscriptionVerification;
 use App\Models\NewsletterSubscriber;
 use Illuminate\Http\Request;
@@ -31,6 +32,21 @@ class HomeController extends Controller
     public function teamCoach()
     {
         return view('frontend.home.team-coach');
+    }
+
+    public function handleContactForm(Request $request)
+    {
+        $request->validate([
+            'name' => ['required' , 'max:200'],
+            'email' => ['required' , 'email'],
+            'phone' => ['required' , 'max:20'],
+            'subject' => ['required' , 'max:200'],
+            'message' => ['required' , 'max:1000'], 
+        ]);
+
+        Mail::to('contact@sloteam.io')->send(new ContactUs($request->subject, $request->message, $request->email));
+
+        return response(['status' => 'success' , 'message' => 'Mail sent successfully']);
     }
 
     public function newsLetterRequest(Request $request) 
