@@ -13,7 +13,7 @@
 
                     <!-- Navigation Menu Items -->
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
-                        <li><a href="#"><i class="fas fa-home-lg-alt"></i> Home</a></li>
+                        <li><a href="{{ route('home') }}"><i class="fas fa-home-lg-alt"></i> Home</a></li>
                         <li><a href="#"><i class="fas fa-tags"></i> Plans</a></li>
                         <li><a class="wsus__droap_arrow" href="#"><i class="fas fa-calendar"></i> Sessions (Slots)</a>
                             <ul class="wsus_menu_cat_droapdown">
@@ -27,7 +27,7 @@
 
                     <!-- Primary Navigation Links -->
                     <ul class="wsus__menu_item">
-                        <li><a class="active" href="#">Home</a></li>
+                        <li><a class="active" href="{{ route('home') }}">Home</a></li>
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="#">My Account</a></li>
                         <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>

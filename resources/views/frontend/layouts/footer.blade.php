@@ -25,7 +25,7 @@
                         <ul class="wsus__footer_menu">
                             <li><a href="{{ route('about-us') }}"><i class="fas fa-caret-right"></i> About Us</a></li>
                             <li><a href="{{ route('contact-us') }}"><i class="fas fa-caret-right"></i> Contact Us</a></li>
-                            <li><a href="#"><i class="fas fa-caret-right"></i> Team Member</a></li>
+                            <li><a href="{{ route('team-coach') }}"><i class="fas fa-caret-right"></i> Team Coach</a></li>
                         </ul>
                     </div>
                 </div>

@@ -28,6 +28,11 @@ class HomeController extends Controller
         return view('frontend.home.contact-us');
     }
 
+    public function teamCoach()
+    {
+        return view('frontend.home.team-coach');
+    }
+
     public function newsLetterRequest(Request $request) 
     {
         $request->validate([
