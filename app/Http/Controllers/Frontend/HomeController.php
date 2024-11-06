@@ -23,6 +23,11 @@ class HomeController extends Controller
         return view('frontend.home.about-us');
     }
 
+    public function contactUs()
+    {
+        return view('frontend.home.contact-us');
+    }
+
     public function newsLetterRequest(Request $request) 
     {
         $request->validate([
