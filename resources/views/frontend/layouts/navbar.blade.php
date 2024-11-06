@@ -54,6 +54,14 @@
                     <!-- Account and Logout -->
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li>
+                            @auth
+                            <a href="{{ route('plans') }}" class="btn btn-outline-info" role="button">
+                                <i class="bi bi-bag-plus"></i>
+                                <span id="wallet-balance">{{ Auth::user()->wallet->balance ?? '0.00' }}</span>
+                            </a>
+                            @endauth
+                        </li>
+                        <li>
                             <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: inline;">
                                 @csrf
                                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
