@@ -195,7 +195,7 @@
                             </ul>
                         </div>
                         <div class="wsus__team_text">
-                            <h5>Sophia White</h5>
+                            <h5>Caner Korkut</h5>
                             <p>Developer</p>
                         </div>
                     </div>

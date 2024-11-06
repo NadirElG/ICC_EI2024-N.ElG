@@ -14,7 +14,7 @@
                     <!-- Navigation Menu Items -->
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
                         <li><a href="{{ route('home') }}"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-tags"></i> Plans</a></li>
+                        <li><a href="{{ route('plans') }}"><i class="fas fa-tags"></i> Plans</a></li>
                         <li><a class="wsus__droap_arrow" href="#"><i class="fas fa-calendar"></i> Sessions (Slots)</a>
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">My Sessions</a></li>
