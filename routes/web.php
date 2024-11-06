@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home' , [HomeController::class, 'index'])->name('home');
     Route::get('/about-us' , [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/contact-us' , [HomeController::class, 'contactUs'])->name('contact-us');
+    Route::get('/slots' , [HomeController::class, ''])->name('contact-us');
     Route::post('/contact-us' , [HomeController::class, 'handleContactForm'])->name('handle-contact-form');
 
     Route::get('/team-coach' , [HomeController::class, 'teamCoach'])->name('team-coach');

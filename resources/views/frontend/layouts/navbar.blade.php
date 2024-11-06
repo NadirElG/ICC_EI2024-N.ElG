@@ -30,7 +30,11 @@
                         <li><a class="active" href="{{ route('home') }}">Home</a></li>
                         <li><a href="#">Dashboard</a></li>
                         <li><a href="#">My Account</a></li>
-                        <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+                    </ul>
+
+                    <!-- Account and Logout -->
+                    <ul class="wsus__menu_item wsus__menu_item_right">
+                    <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
                         <ul class="wsus__menu_droapdown">
                             @auth
                                 <!-- Liens vers les dashboards selon le rôle de l’utilisateur -->
@@ -48,11 +52,6 @@
                             @endauth
                         </ul>
                     </li>
-
-                    </ul>
-
-                    <!-- Account and Logout -->
-                    <ul class="wsus__menu_item wsus__menu_item_right">
                         <li>
                             @auth
                             <a href="{{ route('plans') }}" class="btn btn-outline-info" role="button">
