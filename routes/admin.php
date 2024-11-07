@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubscribersController;
@@ -18,6 +19,9 @@ Route::resource('category', CategoryController::class);
 
 /*User Wallets*/
 Route::resource('users-wallets', UserWalletController::class);
+
+/*Blog*/
+Route::resource('blog-category', BlogCategoryController::class);
 
 /*Subscribers route*/
 Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscribers.index');

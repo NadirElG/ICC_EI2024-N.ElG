@@ -16,17 +16,12 @@
                 <li><a class="nav-link" href="index.html">Sloteam Dashboard</a></li>
               </ul>
             </li>
-            <li class="menu-header">Starter</li>
+            <li class="menu-header">Management</li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>USERS</span></a>
               <ul class="dropdown-menu">
               <li><a class="nav-link" href="{{ route('admin.users-wallets.index') }}">User</a></li>
               <li><a class="nav-link" href="{{ route('admin.subscribers.index') }}">Subscribers</a></li>
-
-              <!-- 
-              <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
-              <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li> 
-              -->
               </ul>
             </li>
             <li class="dropdown">
@@ -40,13 +35,12 @@
               </li>
               </ul>
             </li>
-            
-          </ul>
-
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Documentation
-            </a>
-          </div>        
+            <li class="dropdown">
+              <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>BLOG</span></a>
+              <ul class="dropdown-menu">
+              <li><a class="nav-link" href="{{ route('admin.blog-category.index') }}">Category</a></li>
+              </ul>
+            </li>
+          </ul>  
         </aside>
       </div>

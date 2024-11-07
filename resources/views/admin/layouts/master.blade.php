@@ -44,7 +44,6 @@
 
       @include('admin.layouts.sidebar')
 
-
       <!-- Main Content -->
       <div class="main-content">
         @yield('content')
@@ -127,9 +126,10 @@
               }
           });
       });
+      
   });
-</script>
-
+  </script>
+  
   @stack('scripts')
 
 </body>
