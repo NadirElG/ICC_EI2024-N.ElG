@@ -70,7 +70,7 @@
   <script src="{{ asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 
   <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-  <script src="cdnjs.cloudfare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="//cdnjs.cloudfare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 

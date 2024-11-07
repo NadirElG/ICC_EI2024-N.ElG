@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubscribersController;
@@ -15,6 +16,9 @@ Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->nam
 
 /*Category*/
 Route::resource('category', CategoryController::class);
+
+/*Category*/
+Route::resource('blog-category', BlogCategoryController::class);
 
 /*User Wallets*/
 Route::resource('users-wallets', UserWalletController::class);
