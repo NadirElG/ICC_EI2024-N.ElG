@@ -24,9 +24,9 @@
                         <div class="wsus__share_blog">
                             <p>share:</p>
                             <ul>
-                                <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a class="twitter" href="https://twitter.com/share?url={{url()->current()}}&text={{$blog->title}}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="https://www.linkedin.com/shareArticle?url={{url()->current()}}&title={{$blog->title}}&summary={{Str::limit($blog->title, 20)}}"><i class="fab fa-linkedin-in"></i></a></li>
                                 <li><a class="pinterest" href="#"><i class="fab fa-pinterest-p"></i></a></li>
                             </ul>
                         </div>
