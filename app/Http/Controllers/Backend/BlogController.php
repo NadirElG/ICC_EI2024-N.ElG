@@ -78,7 +78,9 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $categories = BlogCategory::where('status',1)->get();
+        return view('admin.blog.edit',compact('blog','categories'));
     }
 
     /**
@@ -86,8 +88,36 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'image' => ['nullable' , 'image' , 'max:3000'],
+            'title' =>  ['required' , 'string' , 'max:255' , 'unique:blogs,title,'.$id],
+            'description' => ['required' , 'string'],
+            'category' => ['required'],
+            'seo_title' =>  ['nullable' , 'string' , 'max:255'],
+            'seo_description' => ['nullable' , 'string' , 'max:200'],
+        ]);
+
+        $blog = Blog::findOrFail($id);
+
+        $imagePath = $this->updateImage($request, 'image' , 'uploads' , $blog->image);
+
+        $blog->image =!empty($imagePath) ? $imagePath : $blog->image;
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+
+        $blog->category_id = $request->category;
+        $blog->description = $request->description;
+        $blog->user_id = Auth::user()->id;
+        $blog->seo_title = $request->seo_title;
+        $blog->seo_description = $request->seo_description;
+
+        $blog->status = $request->status;
+
+        $blog->save();
+
+        return redirect()->route('admin.blog.index')->with('success', 'Le blog a été créé avec succès.');
     }
+
 
     /**
      * Remove the specified resource from storage.
