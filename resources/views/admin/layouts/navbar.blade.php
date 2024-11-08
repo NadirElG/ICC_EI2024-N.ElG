@@ -9,7 +9,7 @@
         </form>
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-          <img alt="image" src="{{ asset('images/avatar/default_avatar.png') }}" class="rounded-circle mr-1" style="width: 50px; height: 50px;">
+          <img alt="image" src="{{ asset('frontend/images/logoST.png') }}" class="rounded-circle mr-1" style="min-width: 150px; height: 50px;">
           <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username }}</div></a>            <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
                 <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">

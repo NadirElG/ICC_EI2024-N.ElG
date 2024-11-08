@@ -19,6 +19,7 @@ Route::resource('category', CategoryController::class);
 
 /*Category*/
 Route::resource('blog-category', BlogCategoryController::class);
+Route::put('admin/blog-category/{id}', [BlogCategoryController::class, 'update'])->name('admin.blog-category.update');
 
 /*User Wallets*/
 Route::resource('users-wallets', UserWalletController::class);

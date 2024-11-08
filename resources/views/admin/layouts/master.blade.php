@@ -5,6 +5,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <title>Admin Dashboard &mdash; Sloteam</title>
+  <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon1.png') }}">
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('backend/assets/modules/bootstrap/css/bootstrap.min.css') }}">
@@ -128,6 +129,8 @@
           });
       });
   });
+
+  
 </script>
 
   @stack('scripts')

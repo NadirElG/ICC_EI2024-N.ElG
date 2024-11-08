@@ -60,16 +60,34 @@ class BlogCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = BlogCategory::findOrFail($id);
+        return view('admin.blog.blog-category.edit', compact('category'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|string|max:255|unique:blog_categories,name,' . $id,
+            'status' => 'required|boolean',
+        ], [
+            'name.required' => 'Category name is required',
+            'name.unique' => 'Category name must be unique',
+        ]);
+
+        $category = BlogCategory::findOrFail($id);
+        $category->name = $request->input('name');
+        $category->slug = Str::slug($request->input('name')); // Génère le slug à partir du nom
+        $category->status = $request->input('status');
+        $category->save();
+
+        return redirect()->route('admin.blog-category.index')->with('success', 'Category updated successfully.');
+}
+
+
 
     /**
      * Remove the specified resource from storage.
