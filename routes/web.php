@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Frontend\HomeController; 
@@ -32,8 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/home' , [HomeController::class, 'index'])->name('home');
     Route::get('/about-us' , [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/contact-us' , [HomeController::class, 'contactUs'])->name('contact-us');
-    Route::get('/slots' , [HomeController::class, ''])->name('contact-us');
+    Route::get('/slots' , [HomeController::class, ''])->name('slots');
     Route::post('/contact-us' , [HomeController::class, 'handleContactForm'])->name('handle-contact-form');
+    Route::get('/blog-details/{slug}', [BlogController::class, 'blogDetails'])->name('blog-details');
+
 
     Route::get('/team-coach' , [HomeController::class, 'teamCoach'])->name('team-coach');
 

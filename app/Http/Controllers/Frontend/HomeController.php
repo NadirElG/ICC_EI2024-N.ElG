@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactUs;
 use App\Mail\SubscriptionVerification;
 use App\Models\NewsletterSubscriber;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -14,9 +15,15 @@ use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
-    public function index() 
+public function index()
     {
-        return view('frontend.home.index');
+        $recentBlogs = Blog::with(['category','user'])
+            ->where('status', 1)
+            ->orderBy('id', 'DESC')
+            ->take(8)
+            ->get();
+
+        return view('frontend.home.index', compact('recentBlogs'));
     }
 
     public function aboutUs()
