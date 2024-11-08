@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubscribersController;
@@ -17,7 +18,9 @@ Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->nam
 /*Category*/
 Route::resource('category', CategoryController::class);
 
-/*Category*/
+/*Blog*/
+Route::resource('blog', BlogController::class);
+
 Route::resource('blog-category', BlogCategoryController::class);
 Route::put('admin/blog-category/{id}', [BlogCategoryController::class, 'update'])->name('admin.blog-category.update');
 

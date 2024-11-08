@@ -2,7 +2,7 @@
 <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('admin.dashboard') }}">SloTeam</a>
+            <a href="{{ route('admin.dashboard') }}">ADMIN SloTeam</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('admin.dashboard') }}">SLT</a>
@@ -48,6 +48,7 @@
               <ul class="dropdown-menu">
               <li>
                 <a class="nav-link" href="{{ route('admin.blog-category.index') }}"><span>Category</span></a>
+                <a class="nav-link" href="{{ route('admin.blog.index') }}"><span>Blog</span></a>
               </li>
               </ul>
             </li>
