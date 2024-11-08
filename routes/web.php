@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/contact-us' , [HomeController::class, 'handleContactForm'])->name('handle-contact-form');
     Route::get('/blog-details/{slug}', [BlogController::class, 'blogDetails'])->name('blog-details');
 
+    Route::post('blog-comment',[BlogController::class, 'comment'])->name('blog-comment');
 
     Route::get('/team-coach' , [HomeController::class, 'teamCoach'])->name('team-coach');
 
