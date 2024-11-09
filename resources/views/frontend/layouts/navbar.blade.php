@@ -28,7 +28,7 @@
                     <!-- Primary Navigation Links -->
                     <ul class="wsus__menu_item">
                         <li><a class="active" href="{{ route('home') }}">Home</a></li>
-                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a href="#">My Account</a></li>
                     </ul>
 
@@ -138,7 +138,7 @@
             <div class="wsus__mobile_menu_main_menu">
                 <ul>
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Blog</a></li>
                     <li><a href="#">My Account</a></li>
                     <li>
                         @auth
