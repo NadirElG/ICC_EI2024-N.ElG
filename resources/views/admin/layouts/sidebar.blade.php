@@ -49,16 +49,19 @@
               <li>
                 <a class="nav-link" href="{{ route('admin.blog-category.index') }}"><span>Category</span></a>
                 <a class="nav-link" href="{{ route('admin.blog.index') }}"><span>Blog</span></a>
+                <a class="nav-link" href="{{ route('admin.blog-comments.index') }}"><span>Blog Comment</span></a>
               </li>
               </ul>
             </li>
-            
-          </ul>
-
-          <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
+            <li>
+            <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
             <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
               <i class="fas fa-rocket"></i> Documentation
             </a>
-          </div>        
+           </div>  
+            </li>
+          </ul>
+
+                
         </aside>
       </div>
