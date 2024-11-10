@@ -20,21 +20,19 @@
 
                         <!-- Blog Header (Author & Date) -->
                         <p class="wsus__main_blog_header">
-                            <span><i class="fas fa-user-tie"></i> by {{ $blog->user->name }}</span>
+                            <span><i class="fas fa-user-tie"></i> {{ \App\Helpers\TranslationHelper::translate('by') }} {{ $blog->user->name }}</span>
                             <span><i class="fal fa-calendar-alt"></i> {{ date('M d Y', strtotime($blog->created_at)) }}</span>
                         </p>
 
                         <!-- Blog Title and Content -->
                         <div class="wsus__description_area">
-                        <h1>{{ \App\Helpers\TranslationHelper::translate($blog->title) }}</h1>
-{{ \App\Helpers\TranslationHelper::translate($blog->description) }}
-
-                            
+                            <h1>{{ \App\Helpers\TranslationHelper::translate($blog->title) }}</h1>
+                            {{ \App\Helpers\TranslationHelper::translate($blog->description) }}
                         </div>
 
                         <!-- Social Share Buttons -->
                         <div class="wsus__share_blog">
-                            <p>share:</p>
+                            <p>{{ \App\Helpers\TranslationHelper::translate('share:') }}</p>
                             <ul>
                                 <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a class="twitter" href="https://twitter.com/share?url={{ url()->current() }}&text={{ $blog->title }}"><i class="fab fa-twitter"></i></a></li>
@@ -46,7 +44,7 @@
                         <div class="wsus__related_post">
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <h5>More post</h5>
+                                    <h5>{{ \App\Helpers\TranslationHelper::translate('More post') }}</h5>
                                 </div>
                             </div>
                             <div class="row blog_det_slider">
@@ -59,9 +57,9 @@
                                             </a>
                                             <div class="wsus__blog_text">
                                                 <!-- Category and Title of Related Blog -->
-                                                <a class="blog_top red" href="{{ route('blog-details', $blogItem->slug) }}">{{ Str::limit($blogItem->category->name, 10) }}</a>
+                                                <a class="blog_top red" href="{{ route('blog-details', $blogItem->slug) }}">{{ Str::limit(\App\Helpers\TranslationHelper::translate($blogItem->category->name), 10) }}</a>
                                                 <div class="wsus__blog_text_center">
-                                                    <a href="{{ route('blog-details', $blogItem->slug) }}">{{ Str::limit($blogItem->title, 20) }}</a>
+                                                    <a href="{{ route('blog-details', $blogItem->slug) }}">{{ Str::limit(\App\Helpers\TranslationHelper::translate($blogItem->title), 20) }}</a>
                                                     <p class="date">{{ $blogItem->created_at->format('M d Y') }}</p>
                                                 </div>
                                             </div>
@@ -73,17 +71,17 @@
 
                         <!-- Comments Section -->
                         <div class="wsus__comment_area">
-                            <h4>comment <span>{{ count($comments) }}</span></h4>
+                            <h4>{{ \App\Helpers\TranslationHelper::translate('comment') }} <span>{{ count($comments) }}</span></h4>
                             @foreach($comments as $comment)
                                 <div class="wsus__main_comment">
                                     <div class="wsus__comment_text replay">
                                         <h6>{{ $comment->user->name }}<span>{{ date('d M Y', strtotime($comment->created_at)) }}</span></h6>
-                                        <p>{{ $comment->comment }}</p>
+                                        <p>{{ \App\Helpers\TranslationHelper::translate($comment->comment) }}</p>
                                     </div>
                                 </div>
                             @endforeach
                             @if(count($comments) === 0)
-                                <i>Be the first to comment</i>
+                                <i>{{ \App\Helpers\TranslationHelper::translate('Be the first to comment') }}</i>
                             @endif
 
                             <!-- Pagination for Comments -->
@@ -98,18 +96,18 @@
 
                         <!-- Comment Form -->
                         <div class="wsus__post_comment">
-                            <h4>post a comment</h4>
+                            <h4>{{ \App\Helpers\TranslationHelper::translate('post a comment') }}</h4>
                             <form action="{{ route('blog-comment') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-xl-12">
                                         <div class="wsus__single_com">
-                                            <textarea rows="5" name="comment" placeholder="Your Comment"></textarea>
+                                            <textarea rows="5" name="comment" placeholder="{{ \App\Helpers\TranslationHelper::translate('Your Comment') }}"></textarea>
                                             <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                         </div>
                                     </div>
                                 </div>
-                                <button class="common_btn" type="submit">post comment</button>
+                                <button class="common_btn" type="submit">{{ \App\Helpers\TranslationHelper::translate('post comment') }}</button>
                             </form>
                         </div>
                     </div>
@@ -121,10 +119,10 @@
 
                         <!-- Blog Search Form -->
                         <div class="wsus__blog_search">
-                            <h4>search</h4>
+                            <h4>{{ \App\Helpers\TranslationHelper::translate('search') }}</h4>
                             <form action="{{ route('blog') }}" method="GET">
                                 <div class="input-group">
-                                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search" class="form-control">
+                                    <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ \App\Helpers\TranslationHelper::translate('Search') }}" class="form-control">
                                     <button type="submit" class="btn btn-primary"><i class="far fa-search"></i></button>
                                 </div>
                             </form>
@@ -132,25 +130,25 @@
 
                         <!-- Blog Categories List -->
                         <div class="wsus__blog_category">
-                            <h4>Categories</h4>
+                            <h4>{{ \App\Helpers\TranslationHelper::translate('Categories') }}</h4>
                             <ul>
                                 @foreach ($categories as $category)
-                                    <li><a href="{{ route('blog', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
+                                    <li><a href="{{ route('blog', ['category' => $category->slug]) }}">{{ \App\Helpers\TranslationHelper::translate($category->name) }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
 
                         <!-- Recent Blog Posts Section -->
                         <div class="wsus__blog_post">
-                            <h4>Recent Post</h4>
+                            <h4>{{ \App\Helpers\TranslationHelper::translate('Recent Post') }}</h4>
                             @foreach ($recentBlogs as $recentBlog)
                                 <div class="wsus__blog_post_single">
                                     <a href="{{ route('blog-details', $recentBlog->slug) }}" class="wsus__blog_post_img">
                                         <img src="{{ asset($recentBlog->image) }}" alt="blog" class="img-fluid w-60">
                                     </a>
                                     <div class="wsus__blog_post_text">
-                                        <a href="{{ route('blog-details', $recentBlog->slug) }}">{{ Str::limit($recentBlog->title, 30) }}</a>
-                                        <p><span>{{ $recentBlog->created_at->format('M d Y') }}</span> {{ $recentBlog->comments->count() }} Comment{{ $recentBlog->comments->count() > 1 ? 's' : '' }}</p>
+                                        <a href="{{ route('blog-details', $recentBlog->slug) }}">{{ Str::limit(\App\Helpers\TranslationHelper::translate($recentBlog->title), 30) }}</a>
+                                        <p><span>{{ $recentBlog->created_at->format('M d Y') }}</span> {{ $recentBlog->comments->count() }} {{ \App\Helpers\TranslationHelper::translate('Comment') }}{{ $recentBlog->comments->count() > 1 ? 's' : '' }}</p>
                                     </div>
                                 </div>
                             @endforeach

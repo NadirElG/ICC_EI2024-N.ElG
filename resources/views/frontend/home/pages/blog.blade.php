@@ -7,11 +7,11 @@
     <section id="wsus__blogs">
         <div class="container">
             @if(request()->has('search'))
-            <h5>Search : {{request()->search}}</h5>
-            <hr>
+                <h5>{{ \App\Helpers\TranslationHelper::translate('Search') }}: {{ request()->search }}</h5>
+                <hr>
             @elseif(request()->has('category'))
-            <h5>Category : {{request()->category}}</h5>
-            <hr>
+                <h5>{{ \App\Helpers\TranslationHelper::translate('Category') }}: {{ request()->category }}</h5>
+                <hr>
             @endif
             <div class="row">
                 @foreach($blogs as $blog)
@@ -22,10 +22,10 @@
                         </a>
                         <div class="wsus__blog_text">
                             <a class="blog_top red" href="{{ route('blog-details', $blog->slug) }}">
-                                {{ Str::limit($blog->category->name, 10) }}
+                                {{ \App\Helpers\TranslationHelper::translate(Str::limit($blog->category->name, 10)) }}
                             </a>
                             <div class="wsus__blog_text_center">
-                                <a href="{{ route('blog-details', $blog->slug) }}">{{ Str::limit($blog->title, 20) }}</a>
+                                <a href="{{ route('blog-details', $blog->slug) }}">{{ \App\Helpers\TranslationHelper::translate(Str::limit($blog->title, 20)) }}</a>
                                 <p class="date">{{ $blog->created_at->format('M d Y') }}</p>
                             </div>
                         </div>
@@ -33,11 +33,12 @@
                 </div>
                 @endforeach
             </div>
-            @if(count($blogs)===0)
+
+            @if(count($blogs) === 0)
             <div class="row">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h3>No Blog Found !!</h3>
+                        <h3>{{ \App\Helpers\TranslationHelper::translate('No Blog Found !!') }}</h3>
                     </div>       
                 </div>
             </div>
@@ -50,7 +51,7 @@
                         <!-- Previous Button -->
                         @if (!$blogs->onFirstPage())
                             <li class="page-item">
-                                <a class="page-link" href="{{ $blogs->previousPageUrl() }}" aria-label="Previous">
+                                <a class="page-link" href="{{ $blogs->previousPageUrl() }}" aria-label="{{ \App\Helpers\TranslationHelper::translate('Previous') }}">
                                     <i class="fas fa-chevron-left"></i>
                                 </a>
                             </li>
@@ -66,7 +67,7 @@
                         <!-- Next Button -->
                         @if ($blogs->hasMorePages())
                             <li class="page-item">
-                                <a class="page-link" href="{{ $blogs->nextPageUrl() }}" aria-label="Next">
+                                <a class="page-link" href="{{ $blogs->nextPageUrl() }}" aria-label="{{ \App\Helpers\TranslationHelper::translate('Next') }}">
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                             </li>
