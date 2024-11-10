@@ -50,6 +50,7 @@ class User extends Authenticatable
 
     public function slots()
     {
-        return $this->hasMany(Slot::class, 'coach_id');
+        return $this->hasMany(Slot::class, 'user_id'); // Spécifie le nom de la colonne `user_id` dans `slots`
     }
+
 }

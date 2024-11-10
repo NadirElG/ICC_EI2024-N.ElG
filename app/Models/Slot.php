@@ -15,7 +15,9 @@ class Slot extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',       // Ajout de l'ID de l'utilisateur pour l'insertion en masse
         'coach_id',
+        'category_id',   // Ajout de la catégorie
         'title',
         'description',
         'date',
@@ -25,6 +27,7 @@ class Slot extends Model
         'location',
         'price',
         'status',
+        'image',         // Ajout de l'image
     ];
 
     /**
@@ -32,6 +35,14 @@ class Slot extends Model
      */
     public function coach()
     {
-        return $this->belongsTo(User::class, 'coach_id');
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * Relation avec le modèle Category.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }
