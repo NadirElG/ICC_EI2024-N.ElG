@@ -25,9 +25,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
+    <style>
+        .login-register-page {
+            background-color: #08C ;
+        }
+    </style>
 </head>
 
-<body>
+<body class="login-register-page">
     <!--============================
        LOGIN/REGISTER PAGE START
     ==============================-->
@@ -72,13 +77,6 @@
                                             <a class="forget_p" href="{{ route('password.request') }}">forget password ?</a>
                                         </div>
                                         <button class="common_btn" type="submit">login</button>
-                                        <p class="social_text">Sign in with social account</p>
-                                        <ul class="wsus__login_link">
-                                            <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
                                     </form>
                                 </div>
                             </div>

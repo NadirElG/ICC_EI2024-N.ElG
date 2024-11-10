@@ -34,29 +34,35 @@
       <h3 class="masthead-brand">SloTeam</h3>
       <nav class="nav nav-masthead justify-content-center">
         @guest
-          <a class="nav-link active" href="{{ route('login') }}">Se connecter</a>
+          <a class="nav-link active" href="{{ route('login') }}">Login</a>
         @else
-          <a class="nav-link" href="{{ route('user.dashboard') }}">Dashboard</a>
+          <a class="nav-link" href="{{ route('user.dashboard') }}">Locker room</a>
         @endguest
       </nav>
     </div>
   </header>
 
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">Rejoignez la communauté SloTeam!</h1>
-    <p class="lead">SloTeam est votre plateforme idéale pour réserver des séances de sport, gérer vos entraînements, et bien plus encore. Créez un compte ou connectez-vous pour découvrir tous les avantages.</p>
+    <!-- <h1 class="cover-heading">Rejoignez la communauté SloTeam!</h1> -->
+    <div class="wsus_logo_area">
+                        <a class="wsus__header_logo" href="{{ route('home') }}">
+                            <img src="{{ asset('frontend/images/logoST.png') }}" alt="logo" class="img-fluid w-100">
+                        </a>
+                    </div>
+    <!-- <p class="lead">SloTeam est votre plateforme idéale pour réserver des séances de sport, gérer vos entraînements, et bien plus encore. Créez un compte ou connectez-vous pour découvrir tous les avantages.</p> -->
+    <br>
     <p class="lead">
       @guest
-        <a href="{{ route('login') }}" class="btn btn-lg btn-secondary">Rejoindre maintenant</a>
+        <a href="{{ route('login') }}" class="btn btn-lg btn-secondary">Let's SLOT</a>
       @else
-        <a href="{{ route('user.dashboard') }}" class="btn btn-lg btn-primary">Accéder à mon dashboard</a>
+        <a href="{{ route('user.dashboard') }}" class="btn btn-lg btn-primary">Locker room</a>
       @endguest
     </p>
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>Propulsé par <a href="https://sloteam.com">SloTeam</a>.</p>
+      <p>ICC EI 2024 : <a href="#">SloTeam</a>.</p>
     </div>
   </footer>
 </div>
