@@ -6,11 +6,13 @@
     <meta name="description" content="SloTeam - Rejoignez notre communauté sportive!">
     <meta name="author" content="SloTeam Developers">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>SloTeam - Rejoignez-nous!</title>
+    <title>SloTeam</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend/assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/cover.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon1.png') }}">
+
 
     <style>
       .bd-placeholder-img {

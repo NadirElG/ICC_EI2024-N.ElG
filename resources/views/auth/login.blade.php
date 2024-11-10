@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon1.png') }}">
+
     <!-- <link rel="stylesheet" href="css/rtl.css"> -->
     <style>
         .login-register-page {
