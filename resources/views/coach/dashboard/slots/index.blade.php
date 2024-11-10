@@ -23,7 +23,7 @@
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_review_item">
                                         <div class="wsus__dash_rev_img">
-                                            <img src="{{ asset('storage/' . $slot->image) }}" alt="{{ $slot->title }}" class="img-fluid w-100">
+                                        <img src="{{ asset($slot->image) }}" alt="{{ $slot->title }}" class="img-fluid w-100">
                                         </div>
                                         <div class="wsus__dash_rev_text">
                                             <h5>{{ $slot->title }} <span>{{ $slot->date instanceof \Carbon\Carbon ? $slot->date->format('M d, Y') : $slot->date }}</span></h5>

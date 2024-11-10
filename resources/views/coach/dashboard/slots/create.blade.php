@@ -3,16 +3,16 @@
 @section('content')
 
 <section id="wsus__dashboard">
-                                <div class="container-fluid">
-                                    @include('coach.dashboard.layouts.sidebar')
-                                    <div class="row">
-                                        <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
-                                            <div class="dashboard_content mt-2 mt-md-0">
-                                                <h3><i class="fal fa-calendar"></i> Create New Slot</h3>
-                                                <div class="wsus__dashboard_add wsus__add_slot">
-                                                    <form action="{{ route('coach.slots.store') }}" method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @if($errors->any())
+    <div class="container-fluid">
+        @include('coach.dashboard.layouts.sidebar')
+        <div class="row">
+            <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
+                <div class="dashboard_content mt-2 mt-md-0">
+                    <h3><i class="fal fa-calendar"></i> Create New Slot</h3>
+                    <div class="wsus__dashboard_add wsus__add_slot">
+                        <form id="slotForm" action="{{ route('coach.slots.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @if($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -65,7 +65,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Category Selection -->
                                 <div class="col-xl-6 col-md-6">
                                     <div class="wsus__add_address_single">
                                         <label>Category <b>*</b></label>
@@ -93,7 +92,7 @@
                                     <div class="wsus__add_address_single">
                                         <label>Status <b>*</b></label>
                                         <div class="wsus__topbar_select">
-                                            <select class="select_2" name="status">
+                                            <select name="status" required>
                                                 <option value="open" {{ old('status') == 'open' ? 'selected' : '' }}>Open</option>
                                             </select>
                                         </div>
@@ -115,7 +114,7 @@
                                 </div>
                                 
                                 <div class="col-xl-6">
-                                    <button type="submit" class="common_btn">Create Slot</button>
+                                    <button type="button" class="common_btn" onclick="confirmCreation()">Create Slot</button>
                                 </div>
                             </div>
                         </form>
@@ -126,5 +125,34 @@
     </div>
 </section>
 
-@endsection
+<!-- Modal de confirmation -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirm Slot Creation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Creating a slot will deduct 10 credits from your balance. Do you wish to proceed?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+    function confirmCreation() {
+        var confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+        confirmationModal.show();
+    }
+
+    function submitForm() {
+        document.getElementById('slotForm').submit();
+    }
+</script>
+
+@endsection

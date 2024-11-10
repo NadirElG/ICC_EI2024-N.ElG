@@ -53,4 +53,15 @@ class User extends Authenticatable
         return $this->hasMany(Slot::class, 'user_id'); // Spécifie le nom de la colonne `user_id` dans `slots`
     }
 
+    public function deductBalance(int $amount): bool
+    {
+        if ($this->wallet && $this->wallet->balance >= $amount) {
+            $this->wallet->balance -= $amount;
+            $this->wallet->save();
+            return true;
+        }
+        return false;
+    }
+    
+
 }

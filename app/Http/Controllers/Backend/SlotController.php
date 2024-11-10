@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Slot;
 use App\Models\Category;
 use App\Traits\FileUploadTrait;
@@ -49,6 +50,12 @@ class SlotController extends Controller
             'image' => 'required|image|max:3000',
         ]);
 
+        // Vérification et déduction du solde dans le wallet
+        $user = Auth::user();
+        if (!$user->deductBalance(10)) {
+            return redirect()->route('coach.slots.index')->with('error', 'Insufficient credits. You need at least 10 credits to create a slot.');
+        }
+
         // Utilisation du trait pour stocker l'image dans public/images/slots
         $imagePath = $this->uploadImage($request, 'image', 'slots');
 
@@ -64,13 +71,13 @@ class SlotController extends Controller
             'price' => $request->input('price'),
             'status' => $request->input('status'),
             'category_id' => $request->input('category_id'),
-            'image' => $imagePath ?? null,
-            'user_id' => Auth::id(),
+            'image' => $imagePath,
+            'user_id' => $user->id,
         ]);
 
         $slot->save();
 
-        return redirect()->route('coach.slots.index')->with('success', 'Slot created successfully');
+        return redirect()->route('coach.slots.index')->with('success', 'Slot created successfully, and 10 credits were deducted.');
     }
 
     /**
@@ -126,7 +133,7 @@ class SlotController extends Controller
 
         $slot->save();
 
-        return redirect()->route('slots.index')->with('success', 'Slot mis à jour avec succès.');
+        return redirect()->route('slots.index')->with('success', 'Slot updated successfully.');
     }
 
     /**
@@ -141,6 +148,6 @@ class SlotController extends Controller
         $this->removeImage($slot->image);
         $slot->delete();
 
-        return redirect()->route('coach.slots.index')->with('success', 'Slot supprimé avec succès.');
+        return redirect()->route('coach.slots.index')->with('success', 'Slot deleted successfully.');
     }
 }
