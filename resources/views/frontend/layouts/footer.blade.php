@@ -27,10 +27,14 @@
                             <li><a href="{{ route('contact-us') }}"><i class="fas fa-caret-right"></i> Contact Us</a></li>
                             <li><a href="{{ route('team-coach') }}"><i class="fas fa-caret-right"></i> Team Coach</a></li>
                         </ul>
-                        <ul>
-                            <li><a href="{{ route('set-language', 'en') }}"><i class="fas fa-caret-right"></i>English</a></li>
-                            <li><a href="{{ route('set-language', 'fr') }}"><i class="fas fa-caret-right"></i>Français</a></li>
-                            <li><a href="{{ route('set-language', 'nl') }}"><i class="fas fa-caret-right"></i>Nederlands</a></li>
+                    </div>
+                    <br>
+                    <div class="wsus__footer_content">
+                    <h5>Language</h5>
+                        <ul class="wsus__footer_menu">
+                            <li><a href="{{ route('set-language', 'en') }}"><i class="fas fa-caret-right"></i> English</a></li>
+                            <li><a href="{{ route('set-language', 'fr') }}"><i class="fas fa-caret-right"></i> Français</a></li>
+                            <li><a href="{{ route('set-language', 'nl') }}"><i class="fas fa-caret-right"></i> Nederlands</a></li>
                         </ul>
                     </div>
                 </div>
