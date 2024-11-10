@@ -95,8 +95,6 @@
                                         <div class="wsus__topbar_select">
                                             <select class="select_2" name="status">
                                                 <option value="open" {{ old('status') == 'open' ? 'selected' : '' }}>Open</option>
-                                                <option value="in_progress" {{ old('status') == 'in_progress' ? 'selected' : '' }}>In Progress</option>
-                                                <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
                                             </select>
                                         </div>
                                     </div>

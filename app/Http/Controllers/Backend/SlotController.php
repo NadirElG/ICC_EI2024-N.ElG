@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Traits\FileUploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class SlotController extends Controller
 {
@@ -50,10 +49,8 @@ class SlotController extends Controller
             'image' => 'required|image|max:3000',
         ]);
 
-        // Traitement de l'upload de l'image
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads', 'public');
-        }
+        // Utilisation du trait pour stocker l'image dans public/images/slots
+        $imagePath = $this->uploadImage($request, 'image', 'slots');
 
         // Création du slot
         $slot = new Slot([
@@ -75,7 +72,6 @@ class SlotController extends Controller
 
         return redirect()->route('coach.slots.index')->with('success', 'Slot created successfully');
     }
-
 
     /**
      * Affiche le formulaire d'édition d'un slot existant.
@@ -113,7 +109,8 @@ class SlotController extends Controller
             'status' => ['required', 'in:open,in_progress,completed'],
         ]);
 
-        $imagePath = $this->updateImage($request, 'image', 'uploads/slots', $slot->image);
+        // Utilisation du trait pour mettre à jour l'image
+        $imagePath = $this->updateImage($request, 'image', 'slots', $slot->image);
 
         $slot->title = $request->title;
         $slot->description = $request->description;
@@ -138,12 +135,12 @@ class SlotController extends Controller
     public function destroy(Slot $slot)
     {
         if ($slot->coach_id !== Auth::id()) {
-            return redirect()->route('slots.index')->with('error', 'Vous n\'êtes pas autorisé à supprimer ce slot.');
+            return redirect()->route('coach.slots.index')->with('error', 'Vous n\'êtes pas autorisé à supprimer ce slot.');
         }
 
         $this->removeImage($slot->image);
         $slot->delete();
 
-        return redirect()->route('slots.index')->with('success', 'Slot supprimé avec succès.');
+        return redirect()->route('coach.slots.index')->with('success', 'Slot supprimé avec succès.');
     }
 }
