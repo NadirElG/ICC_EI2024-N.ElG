@@ -3,24 +3,24 @@
 @section('content')
 
 <section id="wsus__dashboard">
-    <div class="container-fluid">
-        @include('coach.dashboard.layouts.sidebar')
-        <div class="row">
-            <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
-                <div class="dashboard_content mt-2 mt-md-0">
-                    <h3><i class="fal fa-calendar"></i> Create New Slot</h3>
-                    <div class="wsus__dashboard_add wsus__add_slot">
-                        <form action="{{ route('coach.slots.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                                <div class="container-fluid">
+                                    @include('coach.dashboard.layouts.sidebar')
+                                    <div class="row">
+                                        <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
+                                            <div class="dashboard_content mt-2 mt-md-0">
+                                                <h3><i class="fal fa-calendar"></i> Create New Slot</h3>
+                                                <div class="wsus__dashboard_add wsus__add_slot">
+                                                    <form action="{{ route('coach.slots.store') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 
                             <div class="row">
                                 <div class="col-xl-6 col-md-6">
@@ -127,3 +127,4 @@
 </section>
 
 @endsection
+

@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon1.png') }}">
 
   <!-- <link rel="stylesheet" href="css/rtl.css"> -->
 </head>
@@ -35,10 +36,12 @@
     DASHBOARD MENU START
   ==============================-->
   <div class="wsus__dashboard_menu">
-    <div class="wsusd__dashboard_user">
-      <img src="{{asset('frontend/images/dashboard_user.jpg')}}" alt="img" class="img-fluid">
-      <p>User Dashboard</p>
-    </div>
+    @auth
+      <a href="{{ route('plans') }}" class="btn btn-outline-info" role="button">
+        <i class="bi bi-bag-plus"></i>
+        <span id="wallet-balance">{{ Auth::user()->wallet->balance ?? '0.00' }}</span>
+      </a>
+    @endauth
   </div>
   <!--=============================
     DASHBOARD MENU END
