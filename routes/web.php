@@ -6,6 +6,8 @@ use App\Http\Controllers\Frontend\PlanController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\Frontend\CoachRequestController;
+use App\Http\Controllers\Frontend\ReservationController;
+use App\Http\Controllers\Frontend\SlotController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Gateways\StripeController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::get('blog', [BlogController::class, 'blog'])->name('blog');
     Route::get('blog-details/{slug}', [BlogController::class, 'blogDetails'])->name('blog-details');
     Route::post('blog-comment', [BlogController::class, 'comment'])->name('blog-comment');
+
+    // Slos routes
+    Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
+    Route::get('/slots/{id}', [SlotController::class, 'show'])->name('slots.slot-details');
+
+    Route::post('/slots/{slot}/reserve', [ReservationController::class, 'store'])->name('slots.reserve');
+
+
+
 
     // Newsletter routes
     Route::post('/newsletter-request', [HomeController::class, 'newsLetterRequest'])->name('newsletter-request');
@@ -76,6 +87,13 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'user', 'as' => 
     Route::get('request-coach-form', [CoachRequestController::class, 'index'])->name('request_coach_form');
     Route::post('submit-coach-request', [CoachRequestController::class, 'store'])->name('submit_coach_request');
 });
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('slots/{slot}', [ReservationController::class, 'show'])->name('slots.show');
+// });
+
+
+
 
 // Authentication routes
 require __DIR__.'/auth.php';

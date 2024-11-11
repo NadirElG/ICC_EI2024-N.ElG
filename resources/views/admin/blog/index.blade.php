@@ -7,7 +7,7 @@
         </div>
         <div class="card card-primary">
             <div class="card-header">
-                <h4>All Category</h4>
+                <h4>All Blogs</h4>
                 <div class="card-header-action">
                     <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">
                     Create new
