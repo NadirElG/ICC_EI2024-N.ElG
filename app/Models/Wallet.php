@@ -18,4 +18,22 @@ class Wallet extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * Déduit un montant du solde du portefeuille.
+     * 
+     * @param float $amount
+     * @return bool
+     */
+    public function deductBalance(float $amount): bool
+    {
+        if ($this->balance >= $amount) {
+            $this->balance -= $amount;
+            $this->save();
+
+            return true;
+        }
+
+        return false; // Solde insuffisant
+    }
 }

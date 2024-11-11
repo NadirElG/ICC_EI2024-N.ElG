@@ -3,6 +3,15 @@
 @section('content')
 
     <!--============================
+        SLOT  START
+    ==============================-->
+    <br>
+    @include('frontend.home.sections.slot')
+    <!--============================
+        SLOT BANNER END
+    ==============================-->
+
+    <!--============================
         PLANS BANNER START
     ==============================-->
     @include('frontend.home.sections.banner')
