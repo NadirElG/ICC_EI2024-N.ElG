@@ -36,4 +36,9 @@ class Wallet extends Model
 
         return false; // Solde insuffisant
     }
+
+    public function transaction()
+    {
+        return $this->hasMany(WalletTransaction::class);
+    }
 }

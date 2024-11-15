@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubscribersController;
 use App\Http\Controllers\Backend\UserWalletController; // Ajout de l'import du contrôleur UserWalletController
+use App\Http\Controllers\Backend\WalletTransactionController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Routes
@@ -35,3 +36,11 @@ Route::resource('users-wallets', UserWalletController::class);
 Route::get('subscribers', [SubscribersController::class, 'index'])->name('subscribers.index');
 Route::delete('subscribers/{id}', [SubscribersController::class, 'destroy'])->name('subscribers.destroy');
 Route::post('subscribers-send-mail' , [SubscribersController::class, 'sendMail'])->name('subscribers-send-mail');
+
+/*Transactions*/
+Route::get('wallet-transactions',[WalletTransactionController::class, 'index'])->name('wallet-transactions.index');
+    // Route pour accéder au formulaire de remboursement
+    Route::get('/wallet-transactions/refund', [WalletTransactionController::class, 'showRefundForm'])->name('wallet-transactions.refund');
+
+    // Route pour effectuer un remboursement
+    Route::post('/wallet-transactions/refund', [WalletTransactionController::class, 'refund'])->name('wallet-transactions.process-refund');

@@ -22,7 +22,19 @@
               <ul class="dropdown-menu">
               <li><a class="nav-link" href="{{ route('admin.users-wallets.index') }}">User</a></li>
               <li><a class="nav-link" href="{{ route('admin.subscribers.index') }}">Subscribers</a></li>
-
+              <li class="dropdown">
+    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+        <span>Wallet Transactions</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="nav-link" href="{{ route('admin.wallet-transactions.index') }}">View Transactions</a>
+        </li>
+        <li>
+            <a class="nav-link" href="{{ route('admin.wallet-transactions.refund') }}">Process Refund</a>
+        </li>
+    </ul>
+</li>
               <!-- 
               <li><a class="nav-link" href="layout-transparent.html">Transparent Sidebar</a></li>
               <li><a class="nav-link" href="layout-top-navigation.html">Top Navigation</a></li> 
@@ -53,6 +65,7 @@
               </li>
               </ul>
             </li>
+            
             
           </ul>
 
