@@ -9,7 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/helpers": "^1.7",
-        "laravel/sanctum": "^3.2",
+        "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "stichoza/google-translate-php": "^5.2",
         "stripe/stripe-php": "^16.1",

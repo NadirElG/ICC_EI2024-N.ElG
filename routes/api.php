@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SlotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('v1')->group(function(){
+    Route::get('slots',[SlotController::class, 'index']);
+    Route::get('slots/{id}',[SlotController::class, 'show']);
+
+    Route::middleware('auth:sanctum')->group(function(){
+        Route::put('slot/{id}',[SlotController::class, 'update']);
+    });
 });
