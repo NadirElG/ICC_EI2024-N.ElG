@@ -47,9 +47,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/slots/{slot}/reserve', [ReservationController::class, 'store'])->name('slots.reserve');
 
-
-
-
     // Newsletter routes
     Route::post('/newsletter-request', [HomeController::class, 'newsLetterRequest'])->name('newsletter-request');
     Route::get('/newsletter-verify/{token}', [HomeController::class, 'newsLetterEmailVerify'])->name('newsletter-verify');
