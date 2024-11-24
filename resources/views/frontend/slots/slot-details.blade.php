@@ -56,7 +56,7 @@
 
                         <!-- Bouton de réservation -->
                         <button type="button" class="btn btn-success mt-3" data-toggle="modal" data-target="#reservationModal">
-                            {{ \App\Helpers\TranslationHelper::translate('Reserve Slot') }}
+                            {{ \App\Helpers\TranslationHelper::translate('Reserver') }}
                         </button>
                     </div>
                 </div>
