@@ -1,20 +1,21 @@
-<html>
-<head>
-    <title>Pricing Plans</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+@extends('frontend.layouts.master')
+
+@push('styles')
+    <!-- Styles personnalisés pour la page des plans -->
     <style>
-        body {
+        .custom-pricing-page {
             background-color: #e0f7fa;
             font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            padding: 50px 0;
         }
-        .pricing-table {
+        .custom-pricing-table {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: calc(100vh - 200px); /* Ajustement pour tenir compte du header et du footer */
         }
-        .card {
+        .custom-card {
             border-radius: 20px;
             padding: 30px;
             margin: 0 15px;
@@ -22,109 +23,115 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
-        .card:hover {
+        .custom-card:hover {
             transform: scale(1.05);
         }
-        .card.basic {
+        .custom-basic {
             background-color: #ffffff;
             color: #000000;
         }
-        .card.standard {
+        .custom-standard {
             background-color: #4a90e2;
             color: #ffffff;
         }
-        .card.premium {
+        .custom-premium {
             background-color: #1c3d72;
             color: #ffffff;
         }
-        .price {
+        .custom-price {
             font-size: 48px;
             font-weight: bold;
         }
-        .price small {
+        .custom-price small {
             font-size: 24px;
             font-weight: normal;
         }
-        .yearly {
+        .custom-yearly {
             font-size: 16px;
             color: #888888;
         }
-        .features {
+        .custom-features {
             margin: 20px 0;
             text-align: left;
         }
-        .features div {
+        .custom-features div {
             margin: 10px 0;
         }
-        .btn-custom {
+        .custom-btn {
             border-radius: 50px;
             padding: 10px 30px;
             font-size: 16px;
             font-weight: bold;
         }
-        .btn-basic {
+        .custom-btn-basic {
             background-color: #4a90e2;
             color: #ffffff;
         }
-        .btn-standard {
+        .custom-btn-standard {
             background-color: #ffffff;
             color: #4a90e2;
+            border: 2px solid #ffffff;
         }
-        .btn-premium {
+        .custom-btn-premium {
             background-color: #4a90e2;
             color: #ffffff;
         }
     </style>
-</head>
-<body>
-<div class="pricing-table">
-    <!-- Plan de recharge à 10€ -->
-    <div class="card basic">
-        <h3>RECHARGE 10€</h3>
-        <div class="price">10€</div>
-        <div class="features">
-            <div>Montant crédité : 10€</div>
-            <div>Frais de transaction : 1%</div>
-        </div>
-        <form action="{{ route('stripe.payment') }}" method="post">
-            @csrf
-            <input type="hidden" name="amount" value="10">
-            <button type="submit" class="btn btn-custom btn-basic">CHARGER 10€</button>
-        </form>
-    </div>
+@endpush
 
-    <!-- Plan de recharge à 50€ -->
-    <div class="card standard">
-        <h3>RECHARGE 50€</h3>
-        <div class="price">50€</div>
-        <div class="features">
-            <div>Montant crédité : 50€</div>
-            <div>Bonus : +5€ offert</div>
-            <div>Frais de transaction : 0.8%</div>
-        </div>
-        <form action="{{ route('stripe.payment') }}" method="post">
-            @csrf
-            <input type="hidden" name="amount" value="50">
-            <button type="submit" class="btn btn-custom btn-standard">CHARGER 50€</button>
-        </form>
-    </div>
+@section('content')
+    <div class="custom-pricing-page">
+        <div class="custom-pricing-table">
+            <!-- Plan de recharge à 10€ -->
+            <div class="custom-card custom-basic">
+                <h3>RECHARGE 10€</h3>
+                <div class="custom-price">10€</div>
+                <div class="custom-features">
+                    <div>Montant crédité : 10€</div>
+                    <div>Frais de transaction : 1%</div>
+                </div>
+                <form action="{{ route('stripe.payment') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="amount" value="10">
+                    <button type="submit" class="custom-btn custom-btn-basic">CHARGER 10€</button>
+                </form>
+            </div>
 
-    <!-- Plan de recharge à 100€ -->
-    <div class="card premium">
-        <h3>RECHARGE 100€</h3>
-        <div class="price">100€</div>
-        <div class="features">
-            <div>Montant crédité : 100€</div>
-            <div>Bonus : +15€ offert</div>
-            <div>Frais de transaction : 0.5%</div>
+            <!-- Plan de recharge à 50€ -->
+            <div class="custom-card custom-standard">
+                <h3>RECHARGE 50€</h3>
+                <div class="custom-price">50€</div>
+                <div class="custom-features">
+                    <div>Montant crédité : 50€</div>
+                    <div>Bonus : +5€ offert</div>
+                    <div>Frais de transaction : 0.8%</div>
+                </div>
+                <form action="{{ route('stripe.payment') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="amount" value="50">
+                    <button type="submit" class="custom-btn custom-btn-standard">CHARGER 50€</button>
+                </form>
+            </div>
+
+            <!-- Plan de recharge à 100€ -->
+            <div class="custom-card custom-premium">
+                <h3>RECHARGE 100€</h3>
+                <div class="custom-price">100€</div>
+                <div class="custom-features">
+                    <div>Montant crédité : 100€</div>
+                    <div>Bonus : +15€ offert</div>
+                    <div>Frais de transaction : 0.5%</div>
+                </div>
+                <form action="{{ route('stripe.payment') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="amount" value="100">
+                    <button type="submit" class="custom-btn custom-btn-premium">CHARGER 100€</button>
+                </form>
+            </div>
         </div>
-        <form action="{{ route ('stripe.payment') }}" method="post">
-            @csrf
-            <input type="hidden" name="amount" value="100">
-            <button type="submit" class="btn btn-custom btn-premium">CHARGER 100€</button>
-        </form>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-q2aXJlv0e3KQQRvQoPpw3xRpLxiPZwkBtUyXoS9rywFotXHc/TL45hHNbocFQM" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection
+
+@push('scripts')
+    <!-- Scripts supplémentaires si nécessaire -->
+@endpush
