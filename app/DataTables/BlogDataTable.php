@@ -22,30 +22,30 @@ class BlogDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-        ->addColumn('action', function ($query) {
-            $edit = "<a href='".route('admin.blog.edit', $query->id)."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
-            $delete = "<a href='".route('admin.blog.destroy', $query->id)."' class='btn btn-danger delete-item'><i class='fas fa-trash'></i></a>";
-
-            return $edit . ' ' . $delete;
-        })
-        ->addColumn('image', function ($query) {
-            return '<img width="100px" src="'.asset($query->image).'" alt="Category Image">';
-        })
-        ->addColumn('status', function ($query) {
-            return $query->status === 1 
-                ? '<span class="badge badge-success">Active</span>' 
-                : '<span class="badge badge-danger">Inactive</span>';
-        })
-        ->addColumn('publish_date', function($query){
-            return date('d-m-y', strtotime($query->created_at));
-        })
-        ->addColumn('category' , function($query){
-            return $query->category->name;
-        } )
-
-            ->rawColumns(['action' , 'image' , 'status'])
+            ->addColumn('action', function ($query) {
+                $edit = "<a href='".route('admin.blog.edit', $query->id)."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
+                $delete = "<a href='".route('admin.blog.destroy', $query->id)."' class='btn btn-danger delete-item'><i class='fas fa-trash'></i></a>";
+    
+                return $edit . ' ' . $delete;
+            })
+            ->addColumn('image', function ($query) {
+                return '<img width="100px" src="'.asset($query->image).'" alt="Category Image">';
+            })
+            ->addColumn('status', function ($query) {
+                return $query->status === 1 
+                    ? '<span class="badge badge-success">Active</span>' 
+                    : '<span class="badge badge-danger">Inactive</span>';
+            })
+            ->addColumn('publish_date', function($query){
+                return date('d-m-Y', strtotime($query->created_at));
+            })
+            ->addColumn('category', function($query){
+                return $query->category ? $query->category->name : 'Aucune catégorie';
+            })
+            ->rawColumns(['action', 'image', 'status'])
             ->setRowId('id');
     }
+    
 
     /**
      * Get the query source of dataTable.

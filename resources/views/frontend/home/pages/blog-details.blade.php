@@ -27,7 +27,7 @@
                         <!-- Blog Title and Content -->
                         <div class="wsus__description_area">
                             <h1>{{ \App\Helpers\TranslationHelper::translate($blog->title) }}</h1>
-                            {{ \App\Helpers\TranslationHelper::translate($blog->description) }}
+                            {!! \App\Helpers\TranslationHelper::translate($blog->description) !!}
                         </div>
 
                         <!-- Social Share Buttons -->
