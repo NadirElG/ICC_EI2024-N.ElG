@@ -118,7 +118,6 @@ class BlogController extends Controller
         return redirect()->route('admin.blog.index')->with('success', 'Le blog a été créé avec succès.');
     }
 
-
     /**
      * Remove the specified resource from storage.
      */
@@ -130,4 +129,111 @@ class BlogController extends Controller
         $blog->delete();
         return response(['status' => 'success' , 'message' => 'Deleted Successfully']);
     }
+
+    public function getBlogsForApi()
+    {
+        return response()->json(Blog::all(), 200);
+    }
+
+    public function getBlogForApiWithId($id)
+    {
+        $blog = Blog::find($id); // Trouver le blog correspondant à l'ID
+        if (!$blog) {
+            return response()->json(['message' => 'Blog not found'], 404); // Si l'ID n'existe pas
+        }
+
+        return response()->json($blog, 200); // Retourne le blog trouvé
+    }
+
+    public function storeBlogForApi(Request $request)
+    {
+        // Valider les données reçues
+        $validated = $request->validate([
+            'image' => ['required', 'string'],
+            'title' => ['required', 'string', 'max:255', 'unique:blogs,title'],
+            'description' => ['required', 'string'],
+            'category' => ['required', 'exists:categories,id'],
+            'seo_title' => ['nullable', 'string', 'max:255'],
+            'seo_description' => ['nullable', 'string', 'max:200'],
+            'status' => ['required', 'boolean'],
+            'user_id' => ['required', 'exists:users,id'],
+        ]);
+
+        // Créer un nouvel objet Blog
+        $blog = new Blog();
+        $blog->image = $validated['image'];
+        $blog->title = $validated['title'];
+        $blog->slug = Str::slug($validated['title']);
+        $blog->category_id = $validated['category'];
+        $blog->description = $validated['description'];
+        $blog->user_id = $validated['user_id'];
+        $blog->seo_title = $validated['seo_title'];
+        $blog->seo_description = $validated['seo_description'];
+        $blog->status = $validated['status'];
+
+        // Sauvegarder le blog
+        $blog->save();
+
+        // Retourner une réponse JSON
+        return response()->json([
+            'message' => 'Le blog a été créé avec succès.',
+            'blog' => $blog,
+        ], 201);
+    }
+
+    public function updateBlogForApi(Request $request, string $id)
+    {
+        // Valider uniquement le titre et la description
+        $request->validate([
+            'title' => ['required', 'string', 'max:255', 'unique:blogs,title,' . $id],
+            'description' => ['required', 'string'],
+        ]);
+    
+        // Trouver le blog par ID
+        $blog = Blog::findOrFail($id);
+    
+        // Mettre à jour uniquement le titre et la description
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title); // Mettre à jour le slug avec le nouveau titre
+        $blog->description = $request->description;
+    
+        // Sauvegarder les modifications
+        $blog->save();
+    
+        // Retourner une réponse JSON confirmant les modifications
+        return response()->json([
+            'message' => 'Le blog a été mis à jour avec succès.',
+            'blog' => $blog,
+        ], 200);
+    }
+
+    public function deleteBlogForApi(string $id)
+    {
+        // Trouver le blog par ID
+        $blog = Blog::findOrFail($id);
+
+        // Supprimer le blog
+        $blog->delete();
+
+        // Retourner une réponse JSON
+        return response()->json([
+            'message' => 'Le blog a été supprimé avec succès.',
+        ], 200);
+    }
+
+    
+    
+    
+
+
+
+
+    
+    
+    
+    
+
+
+
+
 }
