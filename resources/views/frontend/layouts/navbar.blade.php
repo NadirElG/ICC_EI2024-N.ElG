@@ -14,8 +14,8 @@
                     <!-- Navigation Menu Items -->
                     <ul class="wsus_menu_cat_item show_home toggle_menu">
                         <li><a href="{{ route('home') }}"><i class="fas fa-home-lg-alt"></i> Home</a></li>
-                        <li><a href="{{ route('plans') }}"><i class="fas fa-tags"></i> Plans</a></li>
-                        <li><a class="wsus__droap_arrow" href="#"><i class="fas fa-calendar"></i> Sessions (Slots)</a>
+                        <li><a href="{{ route('plans') }}"><i class="fas fa-tags"></i>Plans</a></li>
+                        <li><a class="wsus__droap_arrow" href="#"><i class="fas fa-calendar"></i>Sessions (Slots)</a>
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">My Sessions</a></li>
                                 <li><a href="#">Create New Session</a></li>
@@ -28,13 +28,7 @@
                     <!-- Primary Navigation Links -->
                     <ul class="wsus__menu_item">
                         <li><a class="active" href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('blog') }}">Blog</a></li>
-                        <li><a href="#">My Account</a></li>
-                    </ul>
-
-                    <!-- Account and Logout -->
-                    <ul class="wsus__menu_item wsus__menu_item_right">
-                    <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
+                        <li class="wsus__relative_li"><a href="#">Dashboard <i class="fas fa-caret-down"></i></a>
                         <ul class="wsus__menu_droapdown">
                             @auth
                                 <!-- Liens vers les dashboards selon le rôle de l’utilisateur -->
@@ -50,6 +44,19 @@
                                 <!-- Option pour les utilisateurs non connectés -->
                                 <li><a href="{{ route('login') }}">Login</a></li>
                             @endauth
+                        </ul>
+                    </li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+
+                    <!-- Account and Logout -->
+                    <ul class="wsus__menu_item wsus__menu_item_right">
+                    <li class="wsus__relative_li"><a href="#">Language<i class="fas fa-caret-down"></i></a>
+                        <ul class="wsus__menu_droapdown">
+                                    <li><a href="{{ route('set-language', 'fr') }}">Français</a></li>
+                                    <li><a href="{{ route('set-language', 'nl') }}">Nederlands</a></li>
+                                    <li><a href="{{ route('set-language', 'en') }}">English</a></li>
                         </ul>
                     </li>
                         <li>
