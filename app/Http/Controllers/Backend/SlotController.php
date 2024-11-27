@@ -150,4 +150,5 @@ class SlotController extends Controller
 
         return redirect()->route('coach.slots.index')->with('success', 'Slot deleted successfully.');
     }
+
 }

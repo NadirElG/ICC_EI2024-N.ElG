@@ -52,4 +52,27 @@ class SlotController extends Controller
             'slot' => $slot,
         ]);
     }
+    public function indexForApi()
+    {
+        // Récupérer tous les slots avec le statut actif
+        $slots = Slot::where('status', true)->get();
+
+        // Retourner les slots sous forme de JSON
+        return response()->json([
+            'message' => 'Liste des slots récupérée avec succès.',
+            'slots' => $slots,
+        ], 200);
+    }
+    
+    public function showForApi($id)
+    {
+        // Trouver le slot par ID
+        $slot = Slot::findOrFail($id);
+
+        // Retourner les détails du slot sous forme de JSON
+        return response()->json([
+            'message' => 'Détails du slot récupérés avec succès.',
+            'slot' => $slot,
+        ], 200);
+    }
 }

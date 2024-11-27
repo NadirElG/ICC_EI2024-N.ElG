@@ -24,13 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Préfixe pour versionner les APIs (v1)
 Route::prefix('v1')->group(function () {
 
-    // Routes publiques pour les slots
-    Route::get('slots', [SlotController::class, 'index']); // Récupérer tous les slots disponibles
-    Route::get('slots/{id}', [SlotController::class, 'show']); // Récupérer les détails d'un slot spécifique
-
     // Routes protégées pour les slots (nécessite authentification via Sanctum)
     Route::middleware('auth:sanctum')->group(function () {
-        Route::put('slot/{id}', [SlotController::class, 'update']); // Mettre à jour un slot
+        Route::get('slots', [SlotController::class, 'indexForApi']);
+        Route::get('slots/{id}', [SlotController::class, 'showForApi']);
     });
 
     // Routes protégées pour les blogs (nécessite authentification via Sanctum)
