@@ -26,7 +26,9 @@
                                         <h4>{{ $coach->name }}</h4>
                                         <p>{{ $coach->username }}</p>
                                         <a href="mailto:{{ $coach->email }}"><i class="fal fa-envelope"></i> {{ $coach->email }}</a>
-                                        <a href="#" class="common_btn">{{ \App\Helpers\TranslationHelper::translate('Consulter SLOT') }}</a>
+                                        <a href="{{ route('coaches.slots', ['id' => $coach->id]) }}" class="common_btn">
+                                            {{ \App\Helpers\TranslationHelper::translate('Consulter SLOT') }}
+                                        </a>                                    
                                     </div>
                                 </div>
                             </div>

@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
     Route::get('/slots/{id}', [SlotController::class, 'show'])->name('slots.slot-details');
     Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
+    Route::get('/coaches/{id}/slots', [CoachController::class, 'slots'])->name('coaches.slots');
     Route::post('/slots/{slot}/reserve', [ReservationController::class, 'store'])->name('slots.reserve');
 
     // Newsletter routes

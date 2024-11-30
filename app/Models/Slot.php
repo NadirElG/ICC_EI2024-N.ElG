@@ -16,7 +16,6 @@ class Slot extends Model
      */
     protected $fillable = [
         'user_id',       // Ajout de l'ID de l'utilisateur pour l'insertion en masse
-        'coach_id',
         'category_id',   // Ajout de la catégorie
         'title',
         'description',
