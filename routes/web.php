@@ -46,9 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
     Route::get('/slots/{id}', [SlotController::class, 'show'])->name('slots.slot-details');
     Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
-    Route::get('/coaches/{id}/slots', [CoachController::class, 'slots'])->name('coaches.slots');
     Route::post('/slots/{slot}/reserve', [ReservationController::class, 'store'])->name('slots.reserve');
-
+    // Route pour afficher les détails d'un slot spécifique
+    Route::get('/slots/{id}/details', [ReservationController::class, 'show'])->name('slots.details');
+    // Route pour afficher les détails d'un coach spécifique
+    Route::get('/coaches/{id}/slots', [CoachController::class, 'slots'])->name('coaches.slots');
     // Newsletter routes
     Route::post('/newsletter-request', [HomeController::class, 'newsLetterRequest'])->name('newsletter-request');
     Route::get('/newsletter-verify/{token}', [HomeController::class, 'newsLetterEmailVerify'])->name('newsletter-verify');

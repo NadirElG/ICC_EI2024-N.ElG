@@ -38,7 +38,7 @@
                                      alt="{{ $slot->title }}" 
                                      class="img-fluid w-100"
                                      style="height: 200px; object-fit: cover; border-radius: 8px 8px 0 0;">
-                                <div class="wsus__coach_text" style="padding: 15px; height: 150px;">
+                                <div class="wsus__coach_text" style="padding: 15px;">
                                     <h4 style="color: #333;">{{ $slot->title }}</h4>
                                     <p style="color: #555; font-size: 14px;">
                                         <strong>{{ \App\Helpers\TranslationHelper::translate('Catégorie') }} :</strong> 
@@ -52,7 +52,7 @@
                                         <strong>{{ \App\Helpers\TranslationHelper::translate('Prix') }} :</strong>
                                         {{ number_format($slot->price, 2) }}€
                                     </p>
-                                    <a href="#" class="common_btn">
+                                    <a href="{{ route('slots.details', $slot->id) }}" class="common_btn">
                                         {{ \App\Helpers\TranslationHelper::translate('Réserver') }}
                                     </a>
                                 </div>
@@ -80,7 +80,7 @@
                                         <strong>{{ \App\Helpers\TranslationHelper::translate('Prix') }} :</strong>
                                         {{ number_format($slot->price, 2) }}€
                                     </p>
-                                    <a href="#" class="common_btn">
+                                    <a href="{{ route('slots.details', $slot->id) }}" class="common_btn">
                                         {{ \App\Helpers\TranslationHelper::translate('Réserver') }}
                                     </a>
                                 </div>
