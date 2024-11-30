@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\CoachController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\PlanController;
 use App\Http\Controllers\Frontend\UserDashboardController;
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
     // Slos routes
     Route::get('/slots', [SlotController::class, 'index'])->name('slots.index');
     Route::get('/slots/{id}', [SlotController::class, 'show'])->name('slots.slot-details');
-
+    Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
     Route::post('/slots/{slot}/reserve', [ReservationController::class, 'store'])->name('slots.reserve');
 
     // Newsletter routes

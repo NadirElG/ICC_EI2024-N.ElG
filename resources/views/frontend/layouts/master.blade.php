@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
+
 
     <!-- Vos liens CSS -->
     @stack('styles')
@@ -126,6 +129,9 @@
 
 <!--main/custom js-->
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+<script src="{{ asset('frontend/js/sticky_sidebar.js') }}"></script>
+<script src="{{ asset('frontend/js/slick.min.js') }}"></script>
+
 
 @stack('scripts')
 
