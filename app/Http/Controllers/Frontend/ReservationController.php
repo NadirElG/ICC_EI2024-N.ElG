@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReservationConfirmationMail;
 use App\Models\Reservation;
 use App\Models\Slot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -53,6 +55,9 @@ class ReservationController extends Controller
             'status' => 'reserved',
         ]);
         $reservation->save();
+
+        Mail::to($user->email)->send(new ReservationConfirmationMail($user, $slot));
+
 
         return redirect()->route('slots.slot-details', $slot->id)->with('success', 'Reservation successful!');
     }
