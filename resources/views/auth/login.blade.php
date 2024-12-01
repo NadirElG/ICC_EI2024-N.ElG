@@ -110,7 +110,6 @@
                                             <input name="password_confirmation" type="password" placeholder="Confirmation mot de passe">
                                         </div>
 
-                                        <!-- Modification pour utiliser le style de l'exemple -->
                                         <div class="wsus__login_save">
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" id="terms-checkbox">
@@ -127,92 +126,107 @@
                             </div>
                         </div>
 
-                        <!-- Modal pour les conditions d'utilisation -->
-                        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- En-tête du modal -->
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="termsModalLabel">Conditions Générales d'Utilisation</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                                    </div>
-                                    <!-- Corps du modal -->
-                                    <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
-                                        <!-- Contenu des conditions d'utilisation -->
-                                        <p><strong>Date de dernière mise à jour :</strong> [Insérez la date]</p>
+                    <!-- Modal pour les conditions d'utilisation -->
+                    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- En-tête du modal -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="termsModalLabel">Conditions Générales d'Utilisation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                </div>
+                                <!-- Corps du modal -->
+                                <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
+                                    <!-- Contenu des conditions d'utilisation -->
+                                    <p><strong>Date de dernière mise à jour :</strong> 1er décembre 2024</p>
 
-                                        <p>Bienvenue sur <strong>SLOTEAM</strong>. En utilisant notre site web et nos services, vous acceptez sans réserve les présentes Conditions Générales d'Utilisation (CGU). Veuillez les lire attentivement avant de procéder.</p>
+                                    <p>Bienvenue sur <strong>SLOTEAM</strong>. En utilisant notre site web et nos services, vous acceptez sans réserve les présentes Conditions Générales d'Utilisation (CGU). Veuillez les lire attentivement avant de procéder.</p>
 
-                                        <h5>1. Objet</h5>
-                                        <p>Les présentes CGU ont pour objet de définir les modalités et conditions dans lesquelles les utilisateurs peuvent accéder et utiliser le site SLOTEAM pour réserver des créneaux de séances de sport.</p>
+                                    <h5>1. Objet</h5>
+                                    <p>Les présentes CGU définissent les modalités et conditions dans lesquelles les utilisateurs peuvent accéder et utiliser le site SLOTEAM pour réserver des séances de sport.</p>
 
-                                        <h5>2. Acceptation des Conditions</h5>
-                                        <p>L'accès au site et son utilisation impliquent l'acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.</p>
+                                    <h5>2. Acceptation des Conditions</h5>
+                                    <p>
+                                        L'accès au site et son utilisation impliquent l'acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.
+                                    </p>
 
-                                        <h5>3. Inscription et Compte Utilisateur</h5>
-                                        <p>
-                                            a) Pour réserver des séances, vous devez créer un compte en fournissant des informations exactes, complètes et à jour.<br>
-                                            b) Vous êtes responsable de la confidentialité de vos identifiants de connexion. Toute activité réalisée avec vos identifiants vous est imputable.<br>
-                                            c) En cas de suspicion d'utilisation non autorisée de votre compte, veuillez nous en informer immédiatement.
-                                        </p>
+                                    <h5>3. Inscription et Compte Utilisateur</h5>
+                                    <p>
+                                        a) Vous devez créer un compte en fournissant des informations exactes et à jour.<br>
+                                        b) Vous êtes responsable de la confidentialité de vos identifiants. Toute activité réalisée avec vos identifiants vous est imputable.<br>
+                                        c) Si vous soupçonnez une utilisation non autorisée de votre compte, contactez-nous immédiatement.
+                                    </p>
 
-                                        <h5>4. Services de Réservation</h5>
-                                        <p>
-                                            a) SLOTEAM vous permet de réserver des créneaux pour des séances de sport auprès de nos partenaires.<br>
-                                            b) Les disponibilités sont mises à jour régulièrement, mais nous ne garantissons pas l'absence d'erreurs ou de modifications de dernière minute.<br>
-                                            c) Les conditions spécifiques de chaque séance (horaires, tarifs, conditions d'annulation) sont détaillées lors de la réservation.
-                                        </p>
+                                    <h5>4. Réservation des Séances</h5>
+                                    <p>
+                                        a) Vous pouvez réserver des créneaux pour des séances de sport via notre site.<br>
+                                        b) Les disponibilités sont mises à jour régulièrement. Nous ne garantissons pas l'absence d'erreurs ou de modifications de dernière minute.<br>
+                                        c) Les conditions spécifiques de chaque séance (horaires, tarifs, conditions d'annulation) sont disponibles avant chaque réservation.
+                                    </p>
 
-                                        <h5>5. Annulation et Remboursement</h5>
-                                        <p>Les conditions d'annulation et de remboursement varient selon les séances et les partenaires. Veuillez consulter ces informations avant de finaliser votre réservation.</p>
+                                    <h5>5. Annulation et Remboursement</h5>
+                                    <p>
+                                        Les conditions d'annulation et de remboursement varient selon les séances. Veuillez consulter ces informations avant de finaliser votre réservation.
+                                    </p>
 
-                                        <h5>6. Obligations de l'Utilisateur</h5>
-                                        <p>
-                                            a) Vous vous engagez à utiliser le site conformément aux lois belges en vigueur et aux présentes CGU.<br>
-                                            b) Vous vous abstenez de toute utilisation frauduleuse, abusive ou illégale du site.<br>
-                                            c) Vous respectez les droits de propriété intellectuelle afférents au site et à ses contenus.
-                                        </p>
+                                    <h5>6. Obligations de l'Utilisateur</h5>
+                                    <p>
+                                        a) Vous vous engagez à utiliser le site conformément aux lois en vigueur et aux présentes CGU.<br>
+                                        b) Vous vous abstenez de toute utilisation frauduleuse, abusive ou illégale du site.<br>
+                                        c) Vous respectez les droits de propriété intellectuelle associés au site.
+                                    </p>
 
-                                        <h5>7. Protection des Données Personnelles</h5>
-                                        <p>
-                                            a) Vos données personnelles sont collectées et traitées conformément au Règlement Général sur la Protection des Données (RGPD) et à la législation belge.<br>
-                                            b) Pour plus d'informations, consultez notre <a href="#">Politique de Confidentialité</a>.<br>
-                                            c) Vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits, contactez-nous à l'adresse indiquée ci-dessous.
-                                        </p>
+                                    <h5>7. Protection des Données Personnelles</h5>
+                                    <p>
+                                        a) Vos données personnelles sont collectées et traitées conformément au Règlement Général sur la Protection des Données (RGPD).<br>
+                                        b) En cas de suppression de votre compte, vos données seront anonymisées. Toutes les informations personnelles (nom, email, etc.) seront remplacées par des valeurs neutres (ex : "Utilisateur supprimé"), tout en conservant les informations nécessaires à la traçabilité financière, telles que les transactions de wallet.<br>
+                                        c) Vous avez un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@sloteam.be">contact@sloteam.be</a>.<br>
+                                        d) Pour plus d'informations, veuillez consulter notre <a href="#">Politique de Confidentialité</a>.
+                                    </p>
 
-                                        <h5>8. Propriété Intellectuelle</h5>
-                                        <p>Tous les éléments du site (textes, images, logos, logiciels, etc.) sont protégés par le droit de la propriété intellectuelle. Toute reproduction ou représentation sans autorisation écrite préalable est interdite.</p>
+                                    <h5>8. Propriété Intellectuelle</h5>
+                                    <p>
+                                        Tous les éléments du site (textes, images, logos, logiciels, etc.) sont protégés par les lois sur la propriété intellectuelle. Toute reproduction non autorisée est strictement interdite.
+                                    </p>
 
-                                        <h5>9. Responsabilité</h5>
-                                        <p>
-                                            a) SLOTEAM s'efforce d'assurer la disponibilité du site 24h/24, 7j/7, mais ne peut être tenu responsable en cas d'indisponibilité temporaire.<br>
-                                            b) Nous ne saurions être tenus responsables des dommages directs ou indirects résultant de l'utilisation du site.
-                                        </p>
+                                    <h5>9. Responsabilité</h5>
+                                    <p>
+                                        a) SLOTEAM ne peut garantir un accès continu au site, notamment en cas de maintenance ou de panne.<br>
+                                        b) Nous ne sommes pas responsables des dommages résultant de l'utilisation du site, sauf en cas de faute grave.
+                                    </p>
 
-                                        <h5>10. Liens Hypertextes</h5>
-                                        <p>Le site peut contenir des liens vers des sites tiers. SLOTEAM n'assume aucune responsabilité quant au contenu de ces sites externes.</p>
+                                    <h5>10. Liens Hypertextes</h5>
+                                    <p>
+                                        Le site peut contenir des liens vers des sites tiers. Nous ne sommes pas responsables du contenu de ces sites.
+                                    </p>
 
-                                        <h5>11. Modification des CGU</h5>
-                                        <p>Nous nous réservons le droit de modifier les présentes CGU à tout moment. Les modifications prendront effet dès leur publication sur le site. Il vous appartient de consulter régulièrement les CGU.</p>
+                                    <h5>11. Modification des CGU</h5>
+                                    <p>
+                                        Nous nous réservons le droit de modifier les CGU à tout moment. Les modifications prendront effet dès leur publication sur le site.
+                                    </p>
 
-                                        <h5>12. Droit Applicable et Juridiction Compétente</h5>
-                                        <p>Les présentes CGU sont régies par le droit belge. En cas de litige, les tribunaux de l'arrondissement judiciaire où se situe notre siège social seront compétents.</p>
+                                    <h5>12. Droit Applicable et Juridiction</h5>
+                                    <p>
+                                        Les présentes CGU sont régies par le droit belge. Tout litige sera soumis à la compétence exclusive des tribunaux belges.
+                                    </p>
 
-                                        <h5>13. Contact</h5>
-                                        <p>Pour toute question ou réclamation, vous pouvez nous contacter :</p>
-                                        <p>Email : <a href="mailto:contact@sloteam.be">contact@sloteam.be</a></p>
-                                        <p>Adresse : [Votre adresse en Belgique]</p>
+                                    <h5>13. Contact</h5>
+                                    <p>
+                                        Pour toute question ou réclamation, contactez-nous :
+                                    </p>
+                                    <p>Email : <a href="mailto:contact@sloteam.be">contact@sloteam.be</a></p>
+                                    <p>Adresse : 123 Avenue des Sports, Bruxelles, Belgique</p>
 
-                                        <p>En cochant la case "J'accepte les conditions d'utilisation", vous reconnaissez avoir lu, compris et accepté les présentes CGU.</p>
-                                    </div>
-                                    <!-- Pied de page du modal -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                                    </div>
+                                    <p>En cochant la case "J'accepte les conditions d'utilisation", vous reconnaissez avoir lu, compris et accepté les présentes CGU, y compris la politique d'anonymisation des données personnelles.</p>
+                                </div>
+                                <!-- Pied de page du modal -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin du modal -->
+                    </div>
+
 
                     </div>
                 </div>
