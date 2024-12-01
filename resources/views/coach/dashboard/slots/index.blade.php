@@ -8,42 +8,61 @@
         <div class="row">
             <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                 <div class="dashboard_content mt-2 mt-md-0">
-                    <h3><i class="fal fa-calendar-alt"></i> My Slots</h3>
+                    <h3><i class="fal fa-calendar-alt"></i> Mes créneaux</h3>
 
-                    <!-- Button to create a new slot -->
+                    <!-- Bouton pour créer un nouveau slot -->
                     <div class="mb-3">
                         <a href="{{ route('coach.slots.create') }}" class="btn btn-primary">
-                            <i class="fas fa-plus-circle"></i> Create New Slot
+                            <i class="fas fa-plus-circle"></i> Créer un nouveau créneau
                         </a>
                     </div>
 
-                    <div class="wsus__dashboard_review">
-                        <div class="row">
-                            @foreach ($slots as $slot)
-                                <div class="col-xl-6">
-                                    <div class="wsus__dashboard_review_item">
-                                        <div class="wsus__dash_rev_img">
-                                        <img src="{{ asset($slot->image) }}" alt="{{ $slot->title }}" class="img-fluid w-100">
-                                        </div>
-                                        <div class="wsus__dash_rev_text">
-                                            <h5>{{ $slot->title }} <span>{{ $slot->date instanceof \Carbon\Carbon ? $slot->date->format('M d, Y') : $slot->date }}</span></h5>
-                                            <p>Capacity: {{ $slot->capacity }}</p>
-                                            <p>Price: ${{ number_format($slot->price, 2) }}</p>
-                                            <p>Status: <span class="badge bg-{{ $slot->status == 'open' ? 'success' : ($slot->status == 'in_progress' ? 'warning' : 'secondary') }}">{{ ucfirst($slot->status) }}</span></p>
-                                            <ul>
-                                                <li><a href="{{ route('coach.slots.edit', $slot->id) }}"><i class="fal fa-edit"></i> Edit</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                    <!-- Créneaux groupés par statut -->
+                    @foreach (['open' => 'Créneaux ouverts', 'in_progress' => 'Créneaux en cours', 'completed' => 'Créneaux terminés'] as $status => $title)
+                        <div class="mb-4">
+                            <h4>{{ $title }}</h4>
+                            @if ($slots->where('status', $status)->isEmpty())
+                                <div class="alert alert-info">Aucun {{ strtolower($title) }} pour l'instant.</div>
+                            @else
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Titre</th>
+                                                <th>Date</th>
+                                                <th>Capacité</th>
+                                                <th>Prix</th>
+                                                <th>Statut</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($slots->where('status', $status) as $slot)
+                                                <tr>
+                                                    <td>{{ $slot->title }}</td>
+                                                    <td>
+                                                        {{ $slot->date instanceof \Carbon\Carbon ? $slot->date->format('d/m/Y') : $slot->date }}
+                                                    </td>
+                                                    <td>{{ $slot->capacity }}</td>
+                                                    <td>{{ number_format($slot->price, 2) }} €</td>
+                                                    <td>
+                                                        <span class="badge bg-{{ $status == 'open' ? 'success' : ($status == 'in_progress' ? 'warning' : 'secondary') }}">
+                                                            {{ ucfirst($title) }}
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('coach.slots.edit', $slot->id) }}" class="btn btn-warning btn-sm">
+                                                            <i class="fas fa-edit"></i> Modifier
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                            @endforeach
+                            @endif
                         </div>
-
-                        <!-- Message if no slots are found -->
-                        @if($slots->isEmpty())
-                            <div class="alert alert-info mt-3">You have no slots created yet.</div>
-                        @endif
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
