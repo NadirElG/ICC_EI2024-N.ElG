@@ -21,28 +21,32 @@ class UserWalletDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('wallet_balance', function ($user) {
-                return $user->wallet->balance ?? 0; // Assure-toi que la relation wallet existe
+                return $user->wallet->balance ?? 0; // Relation avec le wallet
             })
             ->addColumn('role', function ($user) {
-                return $user->role; 
+                return $user->role;
             })
-            
-            ->addColumn('action', function ($query) {
-                $view = "<a href='#' class='btn btn-primary'><i class='fas fa-eye'></i></a>";
-                $edit = "<a href='#' class='btn btn-warning'><i class='fas fa-edit'></i></a>";
-                $delete = "<a href='#' class='btn btn-danger delete-item'><i class='fas fa-trash'></i></a>";
-                return $view . ' ' . $edit . ' ' . $delete;
-            })
+            ->addColumn('action', function ($user) {
+                // Bouton pour anonymiser
+                $anonymize = "
+                    <form action='" . route('admin.users.anonymize', $user->id) . "' method='POST' style='display:inline;'>
+                        " . csrf_field() . method_field('PUT') . "
+                        <button type='submit' class='btn btn-danger btn-sm' onclick='return confirm(\"Êtes-vous sûr de vouloir anonymiser cet utilisateur et le rendre inactif ?\");'>
+                            <i class='fas fa-user-slash'></i> Anonymiser
+                        </button>
+                    </form>
+                ";
 
-            ->addColumn('status', function($query){
-                if($query->status === 'active'){ // Si le statut est stocké sous forme de texte
+                return $anonymize;
+            })
+            ->addColumn('status', function ($user) {
+                if ($user->status === 'active') { 
                     return '<span class="badge badge-success">Active</span>';
-                } else if($query->status === 'inactive') {
+                } elseif ($user->status === 'inactive') {
                     return '<span class="badge badge-danger">Inactive</span>';
                 }
                 return '<span class="badge badge-secondary">Unknown</span>';
             })
-            
             ->editColumn('created_at', function ($user) {
                 return \Carbon\Carbon::parse($user->created_at)->diffForHumans();
             })
@@ -90,7 +94,6 @@ class UserWalletDataTable extends DataTable
             Column::make('wallet_balance')->addClass('text-center'),
             Column::make('status')->addClass('text-center'),
             Column::make('role')->addClass('text-center'),
-
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

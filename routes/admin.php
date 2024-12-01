@@ -44,3 +44,6 @@ Route::get('wallet-transactions',[WalletTransactionController::class, 'index'])-
 
     // Route pour effectuer un remboursement
     Route::post('/wallet-transactions/refund', [WalletTransactionController::class, 'refund'])->name('wallet-transactions.process-refund');
+    use App\Http\Controllers\Admin\UserController;
+
+Route::put('/users/{id}/anonymize', [UserWalletController::class, 'anonymize'])->name('users.anonymize');
