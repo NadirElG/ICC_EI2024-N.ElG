@@ -71,14 +71,25 @@
                             <td>{{ \Carbon\Carbon::parse($reservation->slot->date)->format('d/m/Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($reservation->slot->start_time)->format('H:i') }}</td>
                             <td>
-                                @if ($reservation->status === 'reserved')
-                                    <span class="badge badge-primary">Reserved</span>
-                                @elseif ($reservation->status === 'completed')
-                                    <span class="badge badge-success">Completed</span>
-                                @else
-                                    <span class="badge badge-danger">Cancelled</span>
-                                @endif
-                            </td>
+    @if ($reservation->status === 'reserved')
+        <!-- Bouton "Reserved" -->
+        <a href="{{ route('slots.slot-details', $reservation->slot->id) }}" class="btn btn-primary btn-sm mt-2">
+            Reserved
+        </a>
+    @elseif ($reservation->status === 'completed')
+        <!-- Bouton "Completed" -->
+        <a href="{{ route('slots.slot-details', $reservation->slot->id) }}" class="btn btn-success btn-sm mt-2">
+            Completed
+        </a>
+    @else
+        <!-- Bouton "Cancelled" -->
+        <a href="{{ route('slots.slot-details', $reservation->slot->id) }}" class="btn btn-danger btn-sm mt-2">
+            Cancelled
+        </a>
+    @endif
+</td>
+
+
                             <td>
                             @if (\Carbon\Carbon::parse($reservation->slot->date)->diffInHours(now()) < 48)
                             <button class="btn btn-secondary" disabled

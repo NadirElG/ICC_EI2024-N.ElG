@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CoachController;
 use App\Http\Controllers\Backend\CoachProfileController;
 use App\Http\Controllers\Backend\SlotController;
+use App\Http\Controllers\Backend\RefundController; // Ajout du contrôleur RefundController
 use Illuminate\Support\Facades\Route;
 
 // Routes pour les coachs
