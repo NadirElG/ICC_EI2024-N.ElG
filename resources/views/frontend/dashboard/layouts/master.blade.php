@@ -31,19 +31,25 @@
 
 <body>
 
-
-  <!--=============================
+<!--=============================
     DASHBOARD MENU START
-  ==============================-->
-  <div class="wsus__dashboard_menu">
-    <div class="wsusd__dashboard_user">
-      <img src="{{asset('frontend/images/dashboard_user.jpg')}}" alt="img" class="img-fluid">
-      <p>User Dashboard</p>
+==============================-->
+<div class="wsus__dashboard_menu">
+    <!-- Bouton pour afficher le solde du wallet -->
+    @auth
+    <div class="mb-3">
+        <a href="{{ route('plans') }}" class="btn btn-outline-info" role="button">
+            <i class="bi bi-bag-plus"></i>
+            <span id="wallet-balance">{{ Auth::user()->wallet->balance ?? '0.00' }} €</span>
+        </a>
     </div>
-  </div>
-  <!--=============================
+    @endauth
+</div>
+<!--=============================
     DASHBOARD MENU END
-  ==============================-->
+==============================-->
+
+
 
 
   <!--=============================

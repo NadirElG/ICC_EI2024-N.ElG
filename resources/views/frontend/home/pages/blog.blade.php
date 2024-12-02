@@ -7,10 +7,10 @@
     <section id="wsus__blogs">
         <div class="container">
             @if(request()->has('search'))
-                <h5>{{ \App\Helpers\TranslationHelper::translate('Search') }}: {{ request()->search }}</h5>
+                <h5>{{ \App\Helpers\TranslationHelper::translate('Recherche') }}: {{ request()->search }}</h5>
                 <hr>
             @elseif(request()->has('category'))
-                <h5>{{ \App\Helpers\TranslationHelper::translate('Category') }}: {{ request()->category }}</h5>
+                <h5>{{ \App\Helpers\TranslationHelper::translate('Categorie') }}: {{ request()->category }}</h5>
                 <hr>
             @endif
             <div class="row">
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h3>{{ \App\Helpers\TranslationHelper::translate('No Blog Found !!') }}</h3>
+                        <h3>{{ \App\Helpers\TranslationHelper::translate('Pas de Blog trouvé !!') }}</h3>
                     </div>       
                 </div>
             </div>

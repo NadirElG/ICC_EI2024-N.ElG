@@ -15,7 +15,7 @@
                         <div class="col-xl-12">
                             <div class="wsus__contact_single">
                                 <i class="fal fa-envelope"></i>
-                                <h5>{{ \App\Helpers\TranslationHelper::translate('Email Address') }}</h5>
+                                <h5>{{ \App\Helpers\TranslationHelper::translate('Adresse Email') }}</h5>
                                 <a href="mailto:contact-info@sloteam.com">contact-info@sloteam.com</a>
                                 <span><i class="fal fa-envelope"></i></span>
                             </div>
@@ -23,7 +23,7 @@
                         <div class="col-xl-12">
                             <div class="wsus__contact_single">
                                 <i class="far fa-phone-alt"></i>
-                                <h5>{{ \App\Helpers\TranslationHelper::translate('Phone Number') }}</h5>
+                                <h5>{{ \App\Helpers\TranslationHelper::translate('Numéro de Téléphone') }}</h5>
                                 <a href="tel:+32489886488">+32 489 886 488</a>
                                 <span><i class="far fa-phone-alt"></i></span>
                             </div>
@@ -31,8 +31,8 @@
                         <div class="col-xl-12">
                             <div class="wsus__contact_single">
                                 <i class="fal fa-map-marker-alt"></i>
-                                <h5>{{ \App\Helpers\TranslationHelper::translate('Office Address') }}</h5>
-                                <p>{{ \App\Helpers\TranslationHelper::translate('Institut des Carrières Commerciales, Brussels, BE') }}</p>
+                                <h5>{{ \App\Helpers\TranslationHelper::translate('Adresse de Bureau') }}</h5>
+                                <p>{{ \App\Helpers\TranslationHelper::translate('Institut des Carrières Commerciales, Bruxelles, BE') }}</p>
                                 <span><i class="fal fa-map-marker-alt"></i></span>
                             </div>
                         </div>
@@ -42,13 +42,13 @@
                 <!-- Contact Form Section -->
                 <div class="col-xl-8">
                     <div class="wsus__contact_question">
-                        <h5>{{ \App\Helpers\TranslationHelper::translate('Send Us a Message') }}</h5>
+                        <h5>{{ \App\Helpers\TranslationHelper::translate('Envoyez-nous un Message') }}</h5>
                         <form id="contact-form">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Your Name') }}" name="name">
+                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Votre Nom') }}" name="name">
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
@@ -58,12 +58,12 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Phone : ex : +32 488 88 88 88') }}" name="phone">
+                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Téléphone : ex : +32 488 88 88 88') }}" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="wsus__con_form_single">
-                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Subject') }}" name="subject" >
+                                        <input type="text" placeholder="{{ \App\Helpers\TranslationHelper::translate('Sujet') }}" name="subject" >
                                     </div>
                                 </div>
                                 
@@ -71,7 +71,7 @@
                                     <div class="wsus__con_form_single">
                                         <textarea cols="3" rows="5" placeholder="{{ \App\Helpers\TranslationHelper::translate('Message') }}" name="message"></textarea>
                                     </div>
-                                    <button id="form-submit" type="submit" class="common_btn">Send</button>
+                                    <button id="form-submit" type="submit" class="common_btn">{{ \App\Helpers\TranslationHelper::translate('Envoyer') }}</button>
                                 </div>
                             </div>
                         </form>
